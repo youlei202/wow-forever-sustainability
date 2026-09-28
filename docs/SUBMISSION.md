@@ -1,4 +1,6 @@
-# Submission materials: draft, not submitted
+# Archived submission draft — 2026-09-24
+
+These historical notes preserve an earlier proposed title, abstract, and evidence scope. They do not describe the current paper; see the [repository README](../README.md) for its current title and results.
 
 The official [CFP](https://virtual.aistats.org/Conferences/2027/CallForPapers) and
 [FAQ](https://virtual.aistats.org/Conferences/2027/SubmissionFAQ), checked on

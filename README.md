@@ -1,6 +1,6 @@
-# Retention-Preserving Completion — WoW: Forever
+# Preserving Future Design Options in Growing Systems — The World of Warcraft: Forever Problem
 
-How can a system add new rewards under a fixed level and power cap while keeping old rewards useful? This repository contains exact completion algorithms, target-family representations, statistical certification, and native WoW experiments for *Retention-Preserving Completion in Growing Compositional Systems — The World of Warcraft: Forever Problem*.
+How can a system add new rewards under a fixed level and power cap while keeping old rewards useful? This repository contains exact completion algorithms, target-family representations, statistical certification, and native WoW experiments for *Preserving Future Design Options in Growing Systems — The World of Warcraft: Forever Problem*.
 
 This is a code repository: manuscript sources, manuscript PDFs, and manuscript-containing archives are kept outside GitHub. The notebooks include saved, executed outputs, so every figure and table can be viewed directly on GitHub without running Jupyter. The subsequent minimal-interface audit is identified separately from the current paper results.
 
