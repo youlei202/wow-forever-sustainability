@@ -1,0 +1,458 @@
+{
+  "batch_id": "confirm-v2",
+  "campaign_alpha_budget": 0.05,
+  "seed_base": 1128100001,
+  "seed_stride": 1000000,
+  "holdout_generator_seed": 2026092707,
+  "stopping_rule": "Fixed sample sizes and eight settings. No optional stopping, no additional settings, no recycling alpha.",
+  "fixed_N_reason": "4096 development paired variances; 131072 for tight frontier equivalence and source capacity in actual catalog, 32768 for wider joint-budget contrasts.",
+  "development_selection_disclosure": "Magister original e=.01 separation disappeared at4096; e=.005 was selected on development and is a new frozen hypothesis. Joint h=.043 and .055 were centered in development interaction windows; original h=.05 failures/uncertainty retained. All thresholds remain local design specifications.",
+  "primary_finding_allocations": {
+    "magister_history": 0.0125,
+    "trinket_history": 0.0125,
+    "penetration_joint": 0.0125,
+    "mana_joint": 0.0125
+  },
+  "alpha_auxiliary": "Each setting .00625: half core all finite gain/retention/cap contrasts, half matched-first equivalence OR main/control joint contrasts. The controls share the latter family.",
+  "claim_adjudication": "oe_claim_decisions.py: every frozen condition must pass; both first releases, simultaneous matching, retaining capacity separation at both B1 and B2, equal exactly bounded value-only capacities; joint claims require both singles safe, additive safe, joint excluded and positive mixed contrast.",
+  "settings": [
+    {
+      "claim_id": "magister_history__local",
+      "finding_id": "magister_history",
+      "kind": "matched_first_source_specific_capacity",
+      "role": "local",
+      "parent_world_id": "catalog_magister_threshold__Horde_Undead_Mage__catalog_v1",
+      "iterations": 131072,
+      "alpha": 0.00625,
+      "gain": 0.01,
+      "headroom": 0.1,
+      "tolerance": 0.005,
+      "timeout_seconds": 180,
+      "first_pair": [
+        "a05",
+        "a13"
+      ],
+      "expected_better_first": "a13",
+      "match_tolerance": 0.0025,
+      "batch_limits": [
+        1,
+        2
+      ],
+      "frozen_paths": {
+        "good": {
+          "batches": [
+            [
+              "a13"
+            ],
+            [
+              "x1"
+            ],
+            [
+              "a01"
+            ]
+          ],
+          "batch_limit": 1
+        },
+        "bad_continuation": {
+          "batches": [
+            [
+              "a05"
+            ],
+            [
+              "x1"
+            ],
+            [
+              "a01"
+            ]
+          ],
+          "batch_limit": 1
+        }
+      }
+    },
+    {
+      "claim_id": "magister_history__heldout",
+      "finding_id": "magister_history",
+      "kind": "matched_first_source_specific_capacity",
+      "role": "heldout",
+      "parent_world_id": "catalog_magister_threshold__Horde_Undead_Mage__catalog_v1",
+      "iterations": 131072,
+      "alpha": 0.00625,
+      "gain": 0.01,
+      "headroom": 0.1,
+      "tolerance": 0.005,
+      "timeout_seconds": 180,
+      "first_pair": [
+        "a05",
+        "a13"
+      ],
+      "expected_better_first": "a13",
+      "match_tolerance": 0.0025,
+      "batch_limits": [
+        1,
+        2
+      ],
+      "frozen_paths": {
+        "good": {
+          "batches": [
+            [
+              "a13"
+            ],
+            [
+              "x1"
+            ],
+            [
+              "a01"
+            ]
+          ],
+          "batch_limit": 1
+        },
+        "bad_continuation": {
+          "batches": [
+            [
+              "a05"
+            ],
+            [
+              "x1"
+            ],
+            [
+              "a01"
+            ]
+          ],
+          "batch_limit": 1
+        }
+      }
+    },
+    {
+      "claim_id": "trinket_history__local",
+      "finding_id": "trinket_history",
+      "kind": "matched_first_source_specific_capacity",
+      "role": "local",
+      "parent_world_id": "catalog_mage_trinkets__Alliance_Gnome_Mage__catalog_v1",
+      "iterations": 131072,
+      "alpha": 0.00625,
+      "gain": 0.01,
+      "headroom": 0.03,
+      "tolerance": 0.01,
+      "timeout_seconds": 180,
+      "first_pair": [
+        "a07",
+        "x3"
+      ],
+      "expected_better_first": "x3",
+      "match_tolerance": 0.0025,
+      "batch_limits": [
+        1,
+        2
+      ],
+      "frozen_paths": {
+        "good": {
+          "batches": [
+            [
+              "x3"
+            ],
+            [
+              "a03"
+            ]
+          ],
+          "batch_limit": 1
+        },
+        "bad_continuation": {
+          "batches": [
+            [
+              "a07"
+            ],
+            [
+              "a03"
+            ]
+          ],
+          "batch_limit": 1
+        },
+        "blocked_repair": {
+          "batches": [
+            [
+              "a07"
+            ],
+            [
+              "a03",
+              "x3"
+            ]
+          ],
+          "batch_limit": 2
+        }
+      }
+    },
+    {
+      "claim_id": "trinket_history__heldout",
+      "finding_id": "trinket_history",
+      "kind": "matched_first_source_specific_capacity",
+      "role": "heldout",
+      "parent_world_id": "catalog_mage_trinkets__Alliance_Gnome_Mage__catalog_v1",
+      "iterations": 131072,
+      "alpha": 0.00625,
+      "gain": 0.01,
+      "headroom": 0.03,
+      "tolerance": 0.01,
+      "timeout_seconds": 180,
+      "first_pair": [
+        "a07",
+        "x3"
+      ],
+      "expected_better_first": "x3",
+      "match_tolerance": 0.0025,
+      "batch_limits": [
+        1,
+        2
+      ],
+      "frozen_paths": {
+        "good": {
+          "batches": [
+            [
+              "x3"
+            ],
+            [
+              "a03"
+            ]
+          ],
+          "batch_limit": 1
+        },
+        "bad_continuation": {
+          "batches": [
+            [
+              "a07"
+            ],
+            [
+              "a03"
+            ]
+          ],
+          "batch_limit": 1
+        },
+        "blocked_repair": {
+          "batches": [
+            [
+              "a07"
+            ],
+            [
+              "a03",
+              "x3"
+            ]
+          ],
+          "batch_limit": 2
+        }
+      }
+    },
+    {
+      "claim_id": "penetration_joint__local",
+      "finding_id": "penetration_joint",
+      "kind": "joint_cap_missed_by_separable_prediction",
+      "role": "local",
+      "parent_world_id": "resistance_penetration__Alliance_Gnome_Mage__s0",
+      "iterations": 32768,
+      "alpha": 0.00625,
+      "gain": 0.005,
+      "headroom": 0.043,
+      "tolerance": 0.03,
+      "timeout_seconds": 180,
+      "joint_pair": [
+        "a10",
+        "x3"
+      ],
+      "batch_limits": [],
+      "joint_negative_controls": [
+        {
+          "control_id": "redundant_penetration",
+          "joint_pair": [
+            "a04",
+            "x3"
+          ],
+          "role": "Expected negative mixed interaction from overlapping resistance reduction; test signed contrast."
+        },
+        {
+          "control_id": "different_partner_near_zero",
+          "joint_pair": [
+            "a10",
+            "x0"
+          ],
+          "role": "Nearby partner control; nonsignificance is not equivalence."
+        }
+      ],
+      "frozen_paths": {
+        "A": [
+          [
+            "a10"
+          ]
+        ],
+        "B": [
+          [
+            "x3"
+          ]
+        ],
+        "joint": {
+          "batches": [
+            [
+              "a10",
+              "x3"
+            ]
+          ],
+          "batch_limit": 2
+        }
+      }
+    },
+    {
+      "claim_id": "penetration_joint__heldout",
+      "finding_id": "penetration_joint",
+      "kind": "joint_cap_missed_by_separable_prediction",
+      "role": "heldout",
+      "parent_world_id": "resistance_penetration__Alliance_Gnome_Mage__s0",
+      "iterations": 32768,
+      "alpha": 0.00625,
+      "gain": 0.005,
+      "headroom": 0.043,
+      "tolerance": 0.03,
+      "timeout_seconds": 180,
+      "joint_pair": [
+        "a10",
+        "x3"
+      ],
+      "batch_limits": [],
+      "joint_negative_controls": [
+        {
+          "control_id": "redundant_penetration",
+          "joint_pair": [
+            "a04",
+            "x3"
+          ],
+          "role": "Expected negative mixed interaction from overlapping resistance reduction; test signed contrast."
+        },
+        {
+          "control_id": "different_partner_near_zero",
+          "joint_pair": [
+            "a10",
+            "x0"
+          ],
+          "role": "Nearby partner control; nonsignificance is not equivalence."
+        }
+      ],
+      "frozen_paths": {
+        "A": [
+          [
+            "a10"
+          ]
+        ],
+        "B": [
+          [
+            "x3"
+          ]
+        ],
+        "joint": {
+          "batches": [
+            [
+              "a10",
+              "x3"
+            ]
+          ],
+          "batch_limit": 2
+        }
+      }
+    },
+    {
+      "claim_id": "mana_joint__local",
+      "finding_id": "mana_joint",
+      "kind": "joint_cap_missed_by_separable_prediction",
+      "role": "local",
+      "parent_world_id": "mana_regen__Alliance_NightElf_Druid__s0",
+      "iterations": 32768,
+      "alpha": 0.00625,
+      "gain": 0.005,
+      "headroom": 0.055,
+      "tolerance": 0.03,
+      "timeout_seconds": 180,
+      "joint_pair": [
+        "a16",
+        "x0"
+      ],
+      "batch_limits": [],
+      "joint_negative_controls": [
+        {
+          "control_id": "redundant_mana",
+          "joint_pair": [
+            "a16",
+            "x3"
+          ],
+          "role": "Expected negative mixed interaction when the partner adds regeneration rather than damage; test signed contrast."
+        }
+      ],
+      "frozen_paths": {
+        "A": [
+          [
+            "a16"
+          ]
+        ],
+        "B": [
+          [
+            "x0"
+          ]
+        ],
+        "joint": {
+          "batches": [
+            [
+              "a16",
+              "x0"
+            ]
+          ],
+          "batch_limit": 2
+        }
+      }
+    },
+    {
+      "claim_id": "mana_joint__heldout",
+      "finding_id": "mana_joint",
+      "kind": "joint_cap_missed_by_separable_prediction",
+      "role": "heldout",
+      "parent_world_id": "mana_regen__Alliance_NightElf_Druid__s0",
+      "iterations": 32768,
+      "alpha": 0.00625,
+      "gain": 0.005,
+      "headroom": 0.055,
+      "tolerance": 0.03,
+      "timeout_seconds": 180,
+      "joint_pair": [
+        "a16",
+        "x0"
+      ],
+      "batch_limits": [],
+      "joint_negative_controls": [
+        {
+          "control_id": "redundant_mana",
+          "joint_pair": [
+            "a16",
+            "x3"
+          ],
+          "role": "Expected negative mixed interaction when the partner adds regeneration rather than damage; test signed contrast."
+        }
+      ],
+      "frozen_paths": {
+        "A": [
+          [
+            "a16"
+          ]
+        ],
+        "B": [
+          [
+            "x0"
+          ]
+        ],
+        "joint": {
+          "batches": [
+            [
+              "a16",
+              "x0"
+            ]
+          ],
+          "batch_limit": 2
+        }
+      }
+    }
+  ],
+  "manifest_filename": "CONFIRMATION_MANIFEST_V2.json",
+  "pre_sampling_revision": "v1 had no native execution; v2 adds independently requested adjudication provenance/identity guards. Scientific design, alpha allocations, jobs and seeds are identical."
+}

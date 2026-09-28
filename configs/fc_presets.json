@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "purpose": "One source-defined native DPS policy and specialization per class; not optimized or full strategy coverage.",
+  "classes": {
+    "Warrior": {
+      "gear": "ui/warrior/gear_sets/phase_1.gear.json",
+      "apl": "ui/warrior/apls/dps_reck.apl.json",
+      "talents": "30305013-050520035150310051",
+      "spec": "warrior",
+      "options": {
+        "startingRage": 0,
+        "queueDelay": 250,
+        "shout": "WarriorShoutBattle",
+        "stance": "WarriorStanceBerserker"
+      },
+      "distance": 0
+    },
+    "Rogue": {
+      "gear": "ui/rogue/gear_sets/combat_sinister_strike_prebis.gear.json",
+      "apl": "ui/rogue/apls/combat_sinister_strike.apl.json",
+      "talents": "00530310501-32003311201515231",
+      "spec": "rogue",
+      "options": {},
+      "distance": 0
+    },
+    "Hunter": {
+      "gear": "ui/hunter/gear_sets/p0.bis.gear.json",
+      "apl": "ui/hunter/apls/p1.apl.json",
+      "talents": "5023000501-0050550501503051",
+      "spec": "hunter",
+      "options": {
+        "ammo": 1,
+        "petType": 1,
+        "petUptime": 1,
+        "petAttackSpeed": "Two"
+      },
+      "distance": 30
+    },
+    "Mage": {
+      "gear": "ui/mage/gear_sets/p0.bis.gear.json",
+      "apl": "ui/mage/apls/forever_frost.apl.json",
+      "talents": "050005013--0555003301001301251",
+      "spec": "mage",
+      "options": {
+        "armor": 3
+      },
+      "distance": 30
+    },
+    "Warlock": {
+      "gear": "ui/warlock/gear_sets/prebis.gear.json",
+      "apl": "ui/warlock/apls/forever_pact.apl.json",
+      "talents": "113-0005003221220311351-0550005",
+      "spec": "warlock",
+      "options": {
+        "armor": 1,
+        "summon": 3,
+        "sacrifice": 2,
+        "weaponImbue": 0
+      },
+      "distance": 30
+    },
+    "Priest": {
+      "gear": "ui/shadow_priest/gear_sets/p0.bis.gear.json",
+      "apl": "ui/shadow_priest/apls/p1.apl.json",
+      "talents": "0253000311--550022501201302251",
+      "spec": "shadowPriest",
+      "options": {
+        "armor": 1
+      },
+      "distance": 20
+    },
+    "Paladin": {
+      "gear": "ui/retribution_paladin/gear_sets/launch.gear.json",
+      "apl": "ui/retribution_paladin/apls/basic_ret.apl.json",
+      "talents": "0550030022001--052251310002330321",
+      "spec": "retributionPaladin",
+      "options": {
+        "primarySeal": 1
+      },
+      "distance": 0
+    },
+    "Shaman": {
+      "gear": "ui/elemental_shaman/gear_sets/launch.gear.json",
+      "apl": "ui/elemental_shaman/apls/default.apl.json",
+      "talents": "2505301500123031-0500001-053050001",
+      "spec": "elementalShaman",
+      "options": {},
+      "distance": 20
+    },
+    "Druid": {
+      "gear": "ui/balance_druid/gear_sets/p0.bis.gear.json",
+      "apl": "ui/balance_druid/apls/launch.apl.json",
+      "talents": "5502220115501351--055003",
+      "spec": "balanceDruid",
+      "options": {
+        "okfUptime": 0.2
+      },
+      "distance": 30
+    }
+  },
+  "normalization": "Reassign provided items by native slot/hand type, pad optional absent offhand/ranged with ID0; retain all item enchants.",
+  "notes": [
+    "No raid buffs, debuffs, consumes, or incoming attacks. Gear enchants retained.",
+    "Hunter PetAttackSpeed Two means2s; source test numeric2 instead denotes1.3s. Explicit choice made before results.",
+    "Druid okfUptime.2 retained from test preset but currently unused by runtime.",
+    "HighOrder health/mana regeneration racial omitted upstream. Gnome energy/rage capacity racial omitted upstream."
+  ]
+}

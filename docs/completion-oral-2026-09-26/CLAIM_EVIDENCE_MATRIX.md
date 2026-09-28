@@ -1,0 +1,27 @@
+# Claims and their evidence boundaries
+
+| Claim | Evidence | Scope and qualification | Suggested use |
+|---|---|---|---|
+| The finite completion contract can be answered by both specialised and generic exact methods | Encoding arguments; 1,200 small models, 28,800 decisions and 7,200 complete-interface comparisons; independent rational subset oracle | A computational check complements, and does not replace, the equivalence argument. Generic UNSAT receipts are not DRUP-checked proofs. | Methods/body |
+| A saved simultaneous certificate supports new targets within the same fixed contract | Two complete antichains; all 192 registered answers reproduced; 73,728 target masks independently checked across four base/expanded models | No new simulations or alpha; no changed menus/history/rules; approximate original event assumptions remain. Postconfirmation utility, not a seventh timed baseline. | Reusable research artifact |
+| Independent native menus exhibit preservation obstructions | Base panel: 42 supported YES, 76 supported NO, 10 UNKNOWN; 69 of the NO cases have supported value-only completions | 128 registered correlated targets in 16 finite menus; approximate paired-t simultaneous event; no game-wide prevalence estimate | Body |
+| Preserving legacy sources, rather than only weak required targets, can itself block updates | Legacy-only retention suffices to exclude 42 base queries in 10 menus; removing legacy obligations restores a supported completion for 28 queries | Necessity/sufficiency labels overlap; power/gain/physical rows and target requirements are held fixed | Body |
+| Preservation tolerance is a consequential design choice | At 0.5%, 1%, 2%, 5%: YES/NO/UNKNOWN = 21/92/15, 42/76/10, 68/50/10, 106/14/8 | All 128 base queries at each level; deterministic propagation of the same frozen event. At 5%, 11 retention-essential NO cases remain in four menus. | Body, with full table supplement |
+| A stable existence prediction can conceal a fragile selected construction | All base/expanded mean answer predictions transfer; two selected expanded witnesses fail on fresh means while alternatives exist | The two mean failures share one Warrior menu. Five base witnesses and six expanded witnesses lack confidence support; mean failure differs from statistical nonconfirmation. | Body caution / supplement |
+| An earlier history can eliminate a named future target without eliminating all future gains | Inherited gloves: exhaustive all-width target exclusion/admission, valid continuous parameter box, source-only obstruction certificate | New deterministic consequence of old evidence; not a new confirmation run, a bound on every release sequence, or a cardinality-constrained result | Body if this is the conceptual focus |
+| Optional menu expansion rescued these targets | No mean or confidence-state transition among 64 registered paired targets | Negative finding. These particular metadata-selected additions do not establish that expansion generally has no value. | Supplement / negative results |
+| Projecting the allowed task set produced a certified opposing decision | Five fresh mean flips; zero flips with both opposing answers confidence-supported | Statistical question remains unresolved. Projection changes task support, weights and enforced task caps; it does not isolate a weighting effect and is not optional-candidate expansion. | Unresolved, no positive body claim |
+| Helper self-retention empirically explains the new panel's obstruction | No supported necessity or sufficiency examples in the source-group ablation | Helpers are still required by the exact contract and synthetic correctness counterexamples; the native mechanism claim is unsupported | Negative results |
+| Deep specialised helper search is required in the new menus | Weakest-source repair and two-helper lookahead find all 43 mean-feasible base targets | Heuristic success has full exact checks; heuristic failure is UNKNOWN. No empirical superiority claim follows. | Negative results |
+| Compilation reduces repeated reference work in native menus | All 6,160 new-menu targets: reference cached 298.63 seconds, reference interface 14.57; all solved | Same exact mean table and target stream; engineering difference remains; this does not establish advantage over generic incremental services | Methods / supplement |
+| A specialised method is generally faster or interfaces always amortise | All three SAT services solve the native pool in about .10 seconds; synthetic incremental/maximal-cache SAT resolve all 67,445 targets, while full SAT compilation leaves 6,392 unresolved | All build/compile costs and partial results retained. Native SAT differences total only 2–3 ms with one timing stream per history; observed prefix crossings do not imply lasting or practically important superiority. | Do not claim universal or established native speedup |
+
+The new main nominal alpha allocation is .04 across sixteen menus (.0025 each);
+.01 remains unspent. The old campaign's .05 is separate. A joint old-plus-new
+statement has a nominal union allocation of .09, not a renewed global .05.
+Paired-t coverage remains approximate under the recorded fixed-N assumptions.
+
+Legacy-only sufficient obstructions occur in every registered source stratum:
+Druid 11 queries/3 menus, Mage 3/1, Paladin 14/3, Warrior 14/3. These add to
+42 queries/10 menus; they attribute the mathematical preservation obligation,
+not a causal effect of a named combat mechanic.

@@ -1,0 +1,39 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{gapblue}{HTML}{4477AA}
+\definecolor{densered}{HTML}{EE7733}
+\definecolor{directgreen}{HTML}{228833}
+\definecolor{budgetpurple}{HTML}{AA3377}
+\definecolor{inkgray}{HTML}{343A40}
+\definecolor{unresolvedred}{HTML}{CC3311}
+\definecolor{gridgray}{HTML}{DEE3E8}
+\providecommand{\dataset}{synthetic}
+\providecommand{\PanelTitle}{Synthetic histories: measured work at identical query prefixes}
+\newcommand{\methodcurve}[3]{%
+\addplot[forget plot,thick,#2] table[x=requested,y=seconds,col sep=comma]{prefix_\dataset_#1.csv};
+\addlegendimage{thick,#2}
+\addlegendentry{#3}
+\addplot[forget plot,only marks,mark=*,mark size=1.9pt,#2] table[x=requested,y=seconds,col sep=comma]{prefix_\dataset_#1_resolved.csv};
+\addplot[forget plot,only marks,mark=o,mark size=2.8pt,unresolvedred,thick] table[x=requested,y=seconds,col sep=comma]{prefix_\dataset_#1_unresolved.csv};}
+\begin{document}
+\begin{tikzpicture}
+\begin{loglogaxis}[width=11.6cm,height=7cm,font=\small,
+ title={\PanelTitle},title style={font=\small,align=center},
+ xlabel={Total unique targets requested over the same histories},
+ ylabel={Cumulative measured work spent (seconds)},
+ grid=both,grid style={gridgray},axis line style={inkgray},
+ legend cell align=left,
+ legend style={at={(.5,-.24)},anchor=north,draw=none,font=\footnotesize,legend columns=2}]
+\methodcurve{reference_fresh}{gapblue}{Reference fresh}
+\methodcurve{reference_cached}{gapblue,dashed}{Reference cached}
+\methodcurve{reference_interface}{budgetpurple}{Reference interface}
+\methodcurve{sat_incremental}{directgreen}{SAT incremental + cache}
+\methodcurve{sat_interface}{densered}{SAT interface}
+\methodcurve{sat_maximal_cache}{inkgray,dashed}{SAT maximal cache}
+\addlegendimage{only marks,mark=o,mark size=2.8pt,unresolvedred,thick}
+\addlegendentry{\shortstack[l]{Spent work only;\\unresolved targets remain}}
+\end{loglogaxis}
+\end{tikzpicture}
+\end{document}

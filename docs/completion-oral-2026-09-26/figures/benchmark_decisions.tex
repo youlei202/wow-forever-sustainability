@@ -1,0 +1,30 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{gapblue}{HTML}{4477AA}
+\definecolor{densered}{HTML}{EE7733}
+\definecolor{directgreen}{HTML}{228833}
+\definecolor{inkgray}{HTML}{343A40}
+\definecolor{gridgray}{HTML}{DEE3E8}
+\providecommand{\decisionmode}{pooled}
+\providecommand{\DecisionTitle}{Pooled exact decisions: measured cost and unresolved cases}
+\begin{document}
+\begin{tikzpicture}
+\begin{semilogxaxis}[width=10.3cm,height=6.5cm,font=\small,
+ title={\DecisionTitle},
+ title style={font=\small,align=center},
+ xlabel={Timed in-memory workflow (seconds; one CPU thread)},
+ ylabel={Resolved within the common wall limit (\%)},
+ xmin=.0001,xmax=60,ymin=0,ymax=102,
+ grid=both,grid style={gridgray},axis line style={inkgray},
+ legend style={at={(.5,-.24)},anchor=north,draw=none,font=\footnotesize,legend columns=3}]
+\addplot[const plot,thick,gapblue] table[x=seconds,y=fraction,col sep=comma]{decisions_\decisionmode_reference.csv};
+\addlegendentry{Reference Python}
+\addplot[const plot,thick,densered] table[x=seconds,y=fraction,col sep=comma]{decisions_\decisionmode_cp_sat.csv};
+\addlegendentry{CP-SAT}
+\addplot[const plot,thick,directgreen] table[x=seconds,y=fraction,col sep=comma]{decisions_\decisionmode_sat.csv};
+\addlegendentry{SAT/PB}
+\end{semilogxaxis}
+\end{tikzpicture}
+\end{document}

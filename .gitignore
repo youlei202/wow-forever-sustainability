@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.venv/
+build/
+dist/
+*.aux
+*.log
+*.out
+*.pdf
+*.zip
+*.csv
+*.jsonl
+*.npz
+
+# Manuscripts are local-only and must not be pushed.
+/paper/

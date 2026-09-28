@@ -1,0 +1,12 @@
+schema_version: 1
+scope: abstract_exact
+split: development
+suite: exact-small
+horizon: 6
+seeds: [0, 1, 2, 3, 4, 5]
+variants: [pair, triple, mixed]
+workers: 2
+retries: 0
+description: "Deterministic finite construction; no native combat or class coverage."
+randomization_unit: pool_seed
+pool_seed: "seed // 2; adjacent even/odd seeds share the final pool and differ in reveal order"

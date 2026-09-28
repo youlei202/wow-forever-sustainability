@@ -1,0 +1,48 @@
+schema: 1
+stage: decisive-value
+scope: frozen_development_objectives_before_screening_new_decision_gain
+ecologies: [static_skill, timing_extra, timing_shared, resource_haste]
+races: [RaceHuman, RaceOrc]
+cached_native_source: runs/r4-foundational-discovery/baseline-v1
+tasks: [sustained, short_burst, four_target, high_armor, burst_10s, endurance_360s, two_target_60s, resource_pressure]
+task_weights: [0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125]
+policies: [native_no_reck, native_reck, rage_conserve]
+decision_gain:
+  epsilon: 0.01
+  minimum_task_mass: 0.125
+  scale: fixed_initial_complete_old_library_task_optimum
+  utility: mean_total_native_damage_before_the_declared_encounter_deadline_divided_by_duration
+  descriptive_epsilon_curve: [0.0025, 0.005, 0.01, 0.02]
+permissions:
+  primary_task_information: known_before_combat_and_gear_selection
+  equipment: any_legal_declared_configuration_before_combat_then_fixed_for_entire_encounter
+  policy: every_declared_policy_reoptimized_for_each_old_and_new_configuration_and_task
+  inter_encounter_state: reset_as_native_encounter_inputs_specify
+  mid_combat_equipment_swap: false
+  randomization: no_battle_internal_mixing_of_equipment_profiles
+  history: all_previously_admitted_gear_and_its_physics_remain_available
+legacy_metrics:
+  epsilon: 0.05
+  behavior_delta: 0.05
+  minimum_task_mass: 0.05
+  cap_headroom: 0.05
+  portfolio_K: 4
+  portfolio_coverage: 0.95
+  source_labels: variable_slot_item_ids_fixed_before_screening
+development_secondary_demand:
+  stable: eight_replicates_of_sustained_with_equal_weights_and_no_extra_information
+  heterogeneous: all_eight_actual_native_tasks_with_equal_weights
+  hidden_until_after_equipping: equip_one_loadout_before_a_uniform_draw_of_the_eight_actual_encounters_then_reoptimize_policy_after_revelation
+  shared_resource_multistage: not_run_until_native_engine_support_verified
+comparison:
+  old_reference: all_current_admitted_old_configs_and_policies_reoptimized
+  caps: never_rebased_after_a_release
+  old_sources: all_initially_competitive_variable_slot_sources_plus_every_useful_new_source
+  candidates: same_per_ecology_across_methods
+  generic_rules: same_feature_dimension_as_structured_rules
+  timeout: unknown
+  source_deletion: remove_all_configurations_using_the_deleted_source_without_changing_other_physics_or_permissions
+confirmation:
+  parameters: freeze_after_development_before_evaluation_of_unseen_rewards
+  final_native_confirmation: one_fixed_design_independent_seed_panel
+  threshold_retuning_after_outcomes: false

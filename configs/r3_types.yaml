@@ -1,0 +1,172 @@
+schema_version: 1
+status: exploratory_source_vocabulary_not_experiment_freeze
+engine:
+  repository: https://github.com/sage3648/mythicsim-forever-engine
+  commit: 17d75ccc8c67d027ae0088243ea3ee806d406847
+  ruleset: RulesetForever
+  interpretation: community_native_engine_not_live_server_certification
+primary_hypothesis:
+  unit_of_reuse: source_audited_control_kernel_with_reward_amplitude_coordinates
+  not_sufficient: number_of_verbal_effect_type_labels
+  exact_candidate: per_seed_affine_reward_with_unchanged_control_trace
+  complexity_quantities:
+    - number_of_distinct_control_kernels
+    - number_of_context_task_policy_envelope_facets
+    - reward_coordinate_dimension
+    - domain_membership_and_kernel_dispatch_description
+  rank_limitation: Low response rank does not bound the number of envelope facets.
+
+character_scope:
+  class: ClassWarrior
+  races: [RaceHuman, RaceOrc]
+  level: 60
+  talents: 30305013-050520035150310051
+  tasks: [sustained, short_burst, four_target, high_armor]
+  policies: [native_no_reck, native_reck, rage_conserve]
+  task_conditions:
+    duration_based: true
+    incoming_damage: false
+    in_front_of_target: false
+    external_buffs: false
+  claim_scope: Finite native tasks and APL catalogue; no universal optimal-policy or defensive claim.
+
+mechanism_vocabulary:
+  weapon_reward:
+    signature: [damage_min, damage_max, speed_seconds, hand_role, weapon_type, normalized_ap_speed]
+    reward_coordinates: [damage_min, damage_max]
+    control_coordinates: [speed_seconds, hand_role, weapon_type]
+  triggered_damage:
+    signature: [trigger_mask, landed_requirement, suppression_flags, ppm, school, defense_type, output_proc_mask, target_rule, damage_min, damage_max]
+    reward_coordinates: [damage_min, damage_max]
+    control_coordinates: [trigger_mask, landed_requirement, suppression_flags, ppm, defense_type, output_proc_mask, target_rule]
+    qualification: School changes require a separate mitigation/kernel audit.
+  periodic_damage:
+    signature: [application_hit_rule, output_proc_mask, school, defense_type, amplitude_per_tick, tick_interval, number_of_ticks, refresh_rule, periodic_crit_rule]
+    reward_coordinates: [amplitude_per_tick]
+    control_coordinates: [application_hit_rule, output_proc_mask, tick_interval, number_of_ticks, refresh_rule, periodic_crit_rule]
+  target_mitigation:
+    signature: [school, resistance_change, duration, application_rule, max_targets, refresh_rule]
+    reward_coordinates: []
+    control_coordinates: [school, resistance_change, duration, application_rule, max_targets, refresh_rule]
+  extra_attack:
+    signature: [trigger_mask, trigger_probability, suppression_flags, offspring_count, hand_role, recursion_eligibility]
+    reward_coordinates: []
+    control_coordinates: [trigger_mask, trigger_probability, suppression_flags, offspring_count, hand_role, recursion_eligibility]
+  active_stat_window:
+    signature: [stat, magnitude, duration, cooldown, shared_cooldown, activation_policy]
+    reward_coordinates: []
+    control_coordinates: [stat, magnitude, duration, cooldown, shared_cooldown, activation_policy]
+    qualification: A separately audited AP-only window may admit reward-only magnitude; no blanket assumption.
+  active_resource:
+    signature: [resource, amount, cap, cooldown, shared_cooldown, activation_policy]
+    reward_coordinates: []
+    control_coordinates: [resource, amount, cap, cooldown, shared_cooldown, activation_policy]
+
+native_mechanisms:
+  blood_talon:
+    item_id: 12795
+    allowed_hands: [main_hand]
+    weapon: {damage_min: 35, damage_max: 67, speed_seconds: 1.3}
+    proc: {ppm: 1.0, spell_id: 13318, school: Physical, defense_type: Melee, output_proc_mask: Empty}
+    periodic: {amplitude_per_tick: 10, tick_interval: 3, number_of_ticks: 10, refresh_rule: Apply_resets_tick_counter, forever_periodic_crit: true}
+    source: sim/common/item_effects.go:684
+  thunderfury:
+    item_id: 19019
+    allowed_hands: [main_hand, off_hand]
+    weapon: {damage_min: 60, damage_max: 145, speed_seconds: 1.9}
+    proc: {ppm: 6.0, spell_id: 21992, direct_tag: 1, school: Nature, defense_type: Magic, damage: 300, ignores_attacker_modifiers: true}
+    secondary: {tag: 2, damage: 0, intended_resistance_change: -25, duration: 12, max_targets: 5}
+    resistance_registration: OnGain_and_OnExpire_shadowed_by_prior_Thunderfury_speed_aura_same_label
+    resistance_effect_status: source_detected_native_no_op_requires_separate_intervention_validation
+    target_slow: {attack_speed_divisor: 1.2, duration: 12}
+    source: sim/common/item_effects.go:2226
+  deathbringer:
+    item_id: 17068
+    allowed_hands: [main_hand, off_hand]
+    weapon: {damage_min: 114, damage_max: 213, speed_seconds: 2.9}
+    proc: {ppm: 1.0, spell_id: 18138, school: Shadow, defense_type: Magic, damage_min: 110, damage_max: 140, output_proc_mask: Empty}
+    source: sim/common/item_effects.go:779
+  diamond_flask:
+    item_id: 20130
+    activation: {spell_id: 24427, stat: Strength, magnitude: 75, duration: 60, cooldown: 360, shared_offensive_trinket_cooldown: 60}
+    source: sim/warrior/items.go:21
+  grileks_charm:
+    item_id: 19951
+    activation: {resource: rage, amount: 30, cooldown: 180, shared_cooldown: none}
+    source: sim/warrior/items.go:64
+
+candidate_affine_family:
+  fixed_items: {main_hand: 12795, off_hand: 19019}
+  coordinates:
+    - {name: base_scale, hook: weapon_damage_scale, item_id: 12795, units: multiplier_of_native_min_and_max}
+    - {name: dot_tick_damage, hook: periodic_damage_per_tick, item_id: 12795, units: raw_damage_per_tick}
+    - {name: thunderfury_damage, hook: proc_damage, item_id: 19019, units: raw_damage_per_proc, optional: true}
+  fixed_control:
+    talon_speed_seconds: 1.3
+    talon_ppm: 1.0
+    talon_tick_interval_seconds: 3
+    talon_number_of_ticks: 10
+    thunderfury_speed_seconds: 1.9
+    thunderfury_ppm: 6.0
+    thunderfury_nature_resistance_reduction: 25
+    registered_effects: unchanged_including_zero_amplitude
+    stats_and_other_gear: fixed_per_explicit_kernel
+  source_conditions:
+    - No damage-dependent APL predicate or encounter termination.
+    - No damage-dependent resource or trigger callback changes across the domain.
+    - Block/clipping/positivity branches remain fixed across the domain.
+    - Proc outcomes and random draw ordering remain identical under coupled seeds.
+  falsification_metrics:
+    - max_per_seed_affine_dps_residual
+    - max_per_action_damage_residual
+    - action_and_hit_crit_count_differences
+    - aura_uptime_differences
+    - resource_gain_actual_gain_and_waste_differences
+
+transfer_design_proposal:
+  status: requires_separate_immutable_protocol_before_fresh_heldout_combats
+  development:
+    family: fixed_control_talon_thunderfury_amplitude
+    anchors: d_plus_one_affinely_independent_points_chosen_before_heldout_results
+    proposed_base_dps_corners: [24, 54]
+    proposed_dot_damage_corners: [0, 30]
+    fixed_talon_speed_seconds: 1.3
+    note: Four rectangle corners permit an interaction residual check beyond three-point affine identification.
+  heldout_seen_family:
+    family: fresh_numeric_amplitude_variants_of_same_registered_native_mechanics
+    proposed_base_dps_interval: [26, 50]
+    proposed_dot_damage_interval: [2, 28]
+    generation: Fresh_random_numeric_points_seed_and_count_to_be_frozen_before_heldout_results.
+    identity_note: These are research variants, not newly discovered official item IDs.
+  heldout_within_verbal_type_new_control:
+    changes: [weapon_speed, proc_ppm, dot_tick_interval, dot_number_of_ticks]
+    proposed_speed_seconds: [1.45, 1.75, 2.35]
+    proposed_proc_ppm: [0.7, 1.6]
+    proposed_tick_interval_seconds: [2.3]
+    prediction: Same type label does not justify reuse of old affine coefficients.
+  heldout_new_mechanism:
+    item_ids: [20130, 19951]
+    families: [active_stat_window, active_resource]
+    identity_note: IDs occurred in R2; withheld here only from R3 kernel fitting, not globally unseen.
+  uncertainty:
+    interpolation_and_native_confirmation: report_separately
+    statistical_target: native_mean_DPS_not_worst_seed
+    generic_baseline: same_features_same_anchors_same_kernel_membership_same_row_budget
+  outcome_obligations: [P, N, D, L, H, C, attempted_candidates, rejected_candidates, failed_kernels]
+  no_claims:
+    - No fixed-type-count theorem without numerical and control-envelope assumptions.
+    - No infinite positive-gap novelty in bounded finite-dimensional behavior space.
+    - No claim of superiority to a generic method that contains the same rule.
+
+physics_phase_proposal:
+  status: development_response_surface_not_heldout_transfer
+  talon_base_dps: [24, 28, 32, 36, 39.23076923076923, 42, 46, 50, 54]
+  talon_speed_seconds: [1.0, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8]
+  speed_mode: hold_base_dps
+  dot: {periodic_damage_per_tick: 10, tick_interval_seconds: 3, number_of_ticks: 10, proc_ppm: 1}
+  off_hand_items: [871, 12590, 18816, 19019]
+  trinket1_items: [11815, 19951]
+  trinket2_items: [13965, 20130]
+  thunderfury_parameters: unchanged_native
+  race_contexts: [RaceHuman, RaceOrc]
+  note: Trinket mechanisms observed in this phase are not globally unseen in later calibration transfer.

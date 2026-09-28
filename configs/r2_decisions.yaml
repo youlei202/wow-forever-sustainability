@@ -1,0 +1,49 @@
+schema_version: 1
+scope: Empirical finite native loadout catalogue, deterministic listed policies; randomized mixtures and other loadouts excluded.
+sample_size: 128
+initial_seed_start: 98260001
+new_item_seed_start: 98270001
+headroom_panels: [0.0, 0.05]
+task_weights: [0.25, 0.25, 0.25, 0.25]
+near_optimal_tolerance: 0.05
+minimum_task_mass: 0.05
+initial_floor_tolerance: 0.05
+maximum_portfolio_size: 4
+portfolio_coverage: 0.95
+behavior:
+  coordinates: [auto_attack_damage_share, execute_damage_share, whirlwind_and_cleave_damage_share, bloodthirst_damage_share, other_damage_share, rage_gain_per_second_divided_by_20, rage_waste_fraction]
+  distance: infinity_norm
+  resolution: 0.05
+  initial_archive: All t0 allowed gear-policy-task mean behavior vectors.
+  old_substitution: All currently allowed configurations without current item, every listed policy, same task; not just best DPS.
+  history_archive: Add all competitive new behavior vectors after each round, regardless of joint failure; do not shrink resolution.
+  claim: Deterministic finite-catalogue mean behavior only; no exclusion of random mixtures or unsearched configurations.
+methods:
+  no_control: All current catalogue loadouts admitted.
+  semantic_q: q=2/4/8 fixed source-feature coordinate rows, thresholds=max t0 catalogue; no threshold updates.
+  generic_q: Arbitrary nonnegative q-row linear constraints over exactly same source features, initialized with semantic rows; frozen training objective admits all t0 loadouts, already globally optimal (185/185), so retain the identical solution.
+  scalar_reprice: Full-current-response strong baseline; nonnegative per-item prices, budget1, preserve every historical registered loadout and reject every currently power-unsafe loadout if feasible. Try current-new competitive loadouts in descending best normalized DPS as a required witness. Maximize rejection margin; price bounds[0,100], margin[0,1]. If no new witness feasible, solve without one. If no solution preserves history and rejects unsafe configurations, retain previous prices and flag unresolved/infeasible LP status accurately. Native data labels confined to current arrivals. No future responses used.
+  exceptions: Full-current-response strong baseline; record each currently power-unsafe configuration as an item-combination exception. Record table growth. No statistical safety certificate.
+  envelope_reference: Admit all currently point-estimate power-safe configurations; finite measured-table reference, not globally optimal game design.
+registration:
+  initial: All initial catalogue loadouts are historical.
+  later: Register every admitted current-new competitive loadout, even after an earlier joint failure; register the item as a legacy source only when competitive.
+  witness_strategy: Strategy can change per task; equipment is the unit counted in K.
+joint_metrics:
+  P: Every currently admitted gear-policy task mean <= (1+headroom)*independently sampled initial task maximum.
+  N: Current item has an admitted gear-policy within0.05*initial_scale of current task optimum on >=0.05 task mass.
+  D: A competitive current-new behavior is >=0.05 away from every allowed current-item-free behavior and every historical behavior on same task, on >=0.05 task mass.
+  L: Every registered previous item source has competitive use on >=0.05 task mass; initial sources reported by source deletion separately.
+  H: All registered historical gear stays admitted; no physics changes across rounds.
+  C: Exact equipment-cover DP over four tasks yields K<=4 covering>=95%task mass; compare t0 gear portfolio under current optima.
+  floor: Every task optimum remains >=0.95*initial reference.
+  success_prefix: Count consecutive rounds satisfying all components; continue evaluating all20 after failure.
+deletion:
+  performance: Delete all gear containing the current/source item and fully reoptimize same finite current catalogue and all listed policies.
+  behavior: Nearest allowed item-free behavior within same task; exact only for the explicitly restricted catalogue.
+uncertainty:
+  result_status: Empirical Monte Carlo trajectories, not distribution-free pass certificates.
+  power_bounds: Propagate simultaneous Bonferroni Student-t mean intervals for all physical gear-policy-task cells within context, including independent initial reference.
+  followup: Select informative failures/witnesses once after primary test, freeze a fresh-seed confirmation; do not relabel selection samples as independent confirmation.
+metadata: Report q, exception rows, item descriptors, serialized descriptor bytes, admitted configurations, per-round parameter changes and native query counts.
+future_branch: Not tested absent a native same-state same-future branch witness; arrival-order differences alone do not count.

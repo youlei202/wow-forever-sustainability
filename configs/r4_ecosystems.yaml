@@ -1,0 +1,522 @@
+schema: 1
+stage: source_defined_native_development
+engine:
+  repository: https://github.com/sage3648/mythicsim-forever-engine
+  commit: 17d75ccc8c67d027ae0088243ea3ee806d406847
+  root_env: WOWFS_ENGINE_ROOT
+  ruleset: RulesetForever
+  interpretation: community_implemented_forever_beta_not_live_server_validation
+  item_database: assets/database/db.json
+character:
+  class: ClassWarrior
+  level: 60
+  discovery_race: RaceHuman
+  confirmation_races:
+  - RaceHuman
+  - RaceOrc
+  talents: 30305013-050520035150310051
+  starting_rage: 0
+  queue_delay_ms: 250
+  stance: WarriorStanceBerserker
+  shout: WarriorShoutBattle
+  base_equipment_source: ui/warrior/gear_sets/phase_1.gear.json
+  base_equipment:
+    head: 12640
+    neck: 18404
+    shoulder: 12927
+    back: 18541
+    chest: 11726
+    wrist: 19146
+    hands: 14551
+    waist: 19137
+    legs: 22385
+    feet: 14616
+    finger1: 17063
+    finger2: 18821
+    trinket1: 11815
+    trinket2: 13965
+    main_hand: 17075
+    off_hand: 18832
+    ranged: 17069
+  enchants: none
+  consumes: none
+  external_buffs: none
+  equipment_legality: validate_native_item_type_hand_type_unique_and_class_before_run
+  scope_note: Counterfactual mixtures of existing native items; database phase labels
+    are not verified release chronology.
+races:
+- RaceHuman
+- RaceOrc
+tasks:
+- id: sustained
+  duration_seconds: 180
+  targets: 1
+  target_level: 63
+  target_armor: 3731
+  execute_proportion_20: 0.2
+- id: short_burst
+  duration_seconds: 30
+  targets: 1
+  target_level: 63
+  target_armor: 3731
+  execute_proportion_20: 0.2
+- id: four_target
+  duration_seconds: 90
+  targets: 4
+  target_level: 63
+  target_armor: 3731
+  execute_proportion_20: 0.2
+- id: high_armor
+  duration_seconds: 180
+  targets: 1
+  target_level: 63
+  target_armor: 10000
+  execute_proportion_20: 0.2
+- id: burst_10s
+  duration_seconds: 10
+  targets: 1
+  target_level: 63
+  target_armor: 3731
+  execute_proportion_20: 0.2
+- id: endurance_360s
+  duration_seconds: 360
+  targets: 1
+  target_level: 63
+  target_armor: 3731
+  execute_proportion_20: 0.2
+- id: two_target_60s
+  duration_seconds: 60
+  targets: 2
+  target_level: 63
+  target_armor: 3731
+  execute_proportion_20: 0.2
+- id: resource_pressure
+  duration_seconds: 180
+  targets: 1
+  target_level: 63
+  target_armor: 3731
+  execute_proportion_20: 0.2
+  incoming:
+    min_base_damage: 500
+    swing_speed: 2
+    damage_spread: 0.1
+    spell_school: SpellSchoolPhysical
+    in_front: true
+  scope: Native incoming-attack resource/mitigation stress; deaths do not terminate
+    attacks; no survival inference.
+strategies:
+- id: native_no_reck
+  source: ui/warrior/apls/dps_no_reck.apl.json
+  transformation: none
+- id: native_reck
+  source: ui/warrior/apls/dps_reck.apl.json
+  transformation: none
+- id: rage_conserve
+  source: ui/warrior/apls/dps_no_reck.apl.json
+  transformation:
+    description: Increase the rage reserve for queued attacks and filler without changing
+      talent points or abilities.
+    action_rage_thresholds:
+    - spell_id: 25286
+      tag: 1
+      old: 40
+      new: 70
+    - spell_id: 20569
+      tag: 1
+      old: 40
+      new: 70
+    - spell_id: 7373
+      old: 80
+      new: 95
+sampling:
+  iterations: 16
+  seed_start: 409240001
+  workers: 64
+  shared_physics: true
+metrics:
+  epsilon: 0.05
+  delta: 0.05
+  minimum_task_mass: 0.05
+  portfolio_limit: 4
+  headroom: 0.05
+  task_weights:
+  - 0.125
+  - 0.125
+  - 0.125
+  - 0.125
+  - 0.125
+  - 0.125
+  - 0.125
+  - 0.125
+  anchor: Each pool own16 old configurations; R3 old caps are separate references,
+    not silently reused.
+ecology_scope: 'Complete enumerations of these source-defined finite domains only:
+  first8 pools192 terminal configurations/7 new items each; final4 pools81/4 new items.
+  Initial2 choices per4 slots=16. Overlapping pools are not independent samples. Old/new
+  is experimental, not official release chronology.'
+source_groups: Item IDs primary; prespecified mechanism curricula secondary; database
+  acquisition metadata retained separately without treating unverified drop source
+  as item identity.
+candidate_design_families:
+- id: static_weapon_skill
+  item_ids:
+  - 18832
+  - 18805
+  - 15806
+  - 18737
+  - 18376
+  - 14551
+  - 18823
+  - 13965
+- id: timing_event_resource
+  item_ids:
+  - 871
+  - 11684
+  - 17705
+  - 17112
+  - 18203
+  - 12590
+  - 19951
+  - 20130
+- id: direct_periodic_school
+  item_ids:
+  - 12795
+  - 809
+  - 12791
+  - 17068
+  - 18816
+  - 14555
+  - 19289
+  - 22321
+- id: target_defense_feedback
+  item_ids:
+  - 19019
+  - 12798
+  - 13286
+  - 13218
+  - 18348
+  - 17774
+  - 18815
+  - 13966
+pools:
+- id: static_skill
+  background: amplitude_attributes
+  slots:
+    main_hand:
+    - 15806
+    - 18737
+    - 18376
+    - 17068
+    off_hand:
+    - 18832
+    - 18805
+    - 18392
+    - 12590
+    neck:
+    - 18404
+    - 11933
+    - 13091
+    - 19577
+    hands:
+    - 14551
+    - 19686
+    - 18823
+  old_choices_per_slot: 2
+  fixed:
+    trinket1: 13965
+    trinket2: 18537
+  mechanism_note: Static weapon/stat/weapon-skill tradeoffs; no effect-rate intervention.
+- id: static_accuracy
+  background: amplitude_attributes
+  slots:
+    main_hand:
+    - 18832
+    - 18805
+    - 18376
+    - 17075
+    off_hand:
+    - 15806
+    - 18737
+    - 18392
+    - 871
+    finger2:
+    - 18821
+    - 18500
+    - 13098
+    - 19325
+    chest:
+    - 11726
+    - 16865
+    - 21997
+  old_choices_per_slot: 2
+  fixed:
+    trinket1: 13965
+    trinket2: 19289
+  mechanism_note: Accuracy, crit and defensive stats with a fixed Maelstrom proc background.
+- id: static_active_boundary
+  background: amplitude_attributes
+  slots:
+    main_hand:
+    - 18376
+    - 15806
+    - 18737
+    - 17112
+    neck:
+    - 18404
+    - 11933
+    - 13091
+    - 19577
+    hands:
+    - 14551
+    - 19686
+    - 18823
+    - 19143
+    legs:
+    - 22385
+    - 22000
+    - 14554
+  old_choices_per_slot: 2
+  fixed:
+    off_hand: 18832
+    trinket1: 13965
+    trinket2: 18537
+  mechanism_note: Mostly static trades; new Cloudkeeper option introduces a real active
+    window.
+- id: timing_extra
+  background: timing_cooldowns
+  slots:
+    main_hand:
+    - 17075
+    - 17112
+    - 18203
+    - 11684
+    off_hand:
+    - 18832
+    - 12590
+    - 871
+    - 17705
+    trinket1:
+    - 11815
+    - 13965
+    - 20130
+    - 22321
+    trinket2:
+    - 18537
+    - 19289
+    - 19951
+  old_choices_per_slot: 2
+  fixed: {}
+  mechanism_note: Haste/extra events, active AP and rage coexist; all trinket mixtures
+    enumerated.
+- id: timing_shared
+  background: timing_cooldowns
+  slots:
+    main_hand:
+    - 17112
+    - 17068
+    - 11684
+    - 18203
+    off_hand:
+    - 18805
+    - 17705
+    - 19019
+    - 12590
+    trinket1:
+    - 13965
+    - 19289
+    - 20130
+    - 22268
+    legs:
+    - 22385
+    - 22000
+    - 14554
+  old_choices_per_slot: 2
+  fixed:
+    trinket2: 18537
+  mechanism_note: Diamond Flask and Cloudkeeper native shared offensive cooldown;
+    new pair may compete.
+- id: timing_periodic
+  background: timing_cooldowns
+  slots:
+    main_hand:
+    - 18203
+    - 17075
+    - 12795
+    - 809
+    off_hand:
+    - 18202
+    - 18832
+    - 12590
+    - 871
+    trinket1:
+    - 20130
+    - 13965
+    - 22268
+    - 11815
+    trinket2:
+    - 19289
+    - 18537
+    - 19951
+  old_choices_per_slot: 2
+  fixed: {}
+  mechanism_note: Haste, delayed periodic reward and active stat windows under short/long
+    demand.
+- id: resource_set_pair
+  background: resource_feedback
+  slots:
+    chest:
+    - 11726
+    - 16865
+    - 21997
+    - 12618
+    wrist:
+    - 19146
+    - 16735
+    - 21996
+    - 18754
+    main_hand:
+    - 18737
+    - 17112
+    - 11684
+    - 17075
+    trinket1:
+    - 13965
+    - 11815
+    - 19951
+  old_choices_per_slot: 2
+  fixed:
+    head: 21999
+    shoulder: 22001
+    off_hand: 18832
+    trinket2: 19289
+  mechanism_note: Exactly two fixed Heroism pieces. New chest and wrists jointly activate4-piece;
+    neither alone does. No outcome tuning.
+- id: resource_cost
+  background: resource_feedback
+  slots:
+    neck:
+    - 18404
+    - 11933
+    - 19577
+    - 13091
+    chest:
+    - 11726
+    - 16865
+    - 21997
+    - 12618
+    trinket1:
+    - 11815
+    - 19289
+    - 19951
+    - 20130
+    off_hand:
+    - 18805
+    - 871
+    - 17705
+  old_choices_per_slot: 2
+  fixed:
+    head: 21999
+    shoulder: 22001
+    wrist: 21996
+    main_hand: 17068
+    trinket2: 13965
+  mechanism_note: Heroism set threshold, Gri lek active rage, standalone Mugamba Hamstring
+    cost-2 and extra attacks. Gri lek+Mugamba2piece adds block only.
+- id: resource_haste
+  background: resource_feedback
+  slots:
+    main_hand:
+    - 11684
+    - 17112
+    - 18203
+    off_hand:
+    - 871
+    - 18832
+    - 12590
+    trinket1:
+    - 13965
+    - 19289
+    - 19951
+    legs:
+    - 22385
+    - 14554
+    - 22000
+  old_choices_per_slot: 2
+  fixed:
+    head: 21999
+    shoulder: 22001
+    wrist: 21996
+    chest: 21997
+    neck: 19577
+    trinket2: 18537
+  mechanism_note: Native Heroism4 is initially active; compare event supply, active
+    rage and shared timing.
+- id: target_damage
+  background: target_damage_defense
+  slots:
+    main_hand:
+    - 17068
+    - 18376
+    - 12791
+    off_hand:
+    - 18832
+    - 18816
+    - 19019
+    trinket1:
+    - 13965
+    - 19289
+    - 22321
+    trinket2:
+    - 18537
+    - 11815
+    - 20130
+  old_choices_per_slot: 2
+  fixed: {}
+  mechanism_note: Shadow/fire/nature and periodic damage versus target count and armor.
+- id: target_armor
+  background: target_damage_defense
+  slots:
+    main_hand:
+    - 809
+    - 12798
+    - 12794
+    off_hand:
+    - 18816
+    - 14555
+    - 19019
+    trinket1:
+    - 13965
+    - 19289
+    - 22321
+    neck:
+    - 18404
+    - 11933
+    - 17111
+  old_choices_per_slot: 2
+  fixed:
+    trinket2: 18537
+  mechanism_note: Native armor debuff, chained magic damage, periodic damage and on-hit
+    neck damage.
+- id: target_retaliation
+  background: target_damage_defense
+  slots:
+    main_hand:
+    - 18376
+    - 17068
+    - 18348
+    off_hand:
+    - 18832
+    - 13286
+    - 13218
+    trinket1:
+    - 13965
+    - 17774
+    - 18815
+    trinket2:
+    - 18537
+    - 19289
+    - 13966
+  old_choices_per_slot: 2
+  fixed: {}
+  mechanism_note: Incoming-triggered stats/retaliation, armor/defense, attack slow
+    and physical armor debuff. No survival claim.

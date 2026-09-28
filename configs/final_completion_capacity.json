@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "stage": "final-completion-capacity",
+  "claim_status": "Attachment formula is a hypothesis until its exact assumptions and native mapping are checked; not inherited as a proved result.",
+  "task_information": "Task known before selecting one complete legal gear configuration; unchanged native APL available to all old and new gear.",
+  "policies": "One source-grounded native damage APL per class, same on both sides; a policy-restricted study, not optimization over all possible player control.",
+  "tasks": [
+    {"id":"sustained","duration":180,"armor":3731,"targets":1},
+    {"id":"high_armor","duration":180,"armor":10000,"targets":1},
+    {"id":"short_burst","duration":10,"armor":3731,"targets":1},
+    {"id":"cooldown_window","duration":60,"armor":3731,"targets":1},
+    {"id":"cleave","duration":90,"armor":3731,"targets":4},
+    {"id":"endurance","duration":360,"armor":3731,"targets":1},
+    {"id":"elemental","duration":180,"armor":3731,"targets":1,"mob_type":"MobTypeElemental"},
+    {"id":"extended_execute","duration":180,"armor":3731,"targets":1,"execute":0.35}
+  ],
+  "task_weights": [0.125,0.125,0.125,0.125,0.125,0.125,0.125,0.125],
+  "utility": "Mean native total damage per encounter duration, including native pet contribution where reported by engine; no health-survival or generic wave/movement claim.",
+  "fixed_headroom":0.05,
+  "meaningful_gain":0.01,
+  "gain_required_mass":0.125,
+  "legacy_epsilon":0.05,
+  "legacy_required_mass":0.05,
+  "behavior_delta":0.05,
+  "portfolio_K":4,
+  "portfolio_coverage":0.95,
+  "capacity_estimands": {
+    "T_utility":"P/H/G complete-library frontier capacity for the frozen incoming family.",
+    "T_value_legacy":"P/N/L/H/C/G capacity; source obligations may reduce the utility-only formula.",
+    "T_joint":"Adds the retained original behavioral D check. No scalar-output formula is claimed to imply D. Native cross-class behavioral features and any unavailable original rage coordinate will be explicitly scoped."
+  },
+  "old_partner_count":5,
+  "old_partner_normalized_response_spectra": {
+    "large_gap":[0,0.0001,0.0002,0.0003,0.044],
+    "dense":[0,0.011,0.022,0.033,0.044]
+  },
+  "initial_primary_normalized_response":0.956,
+  "incoming_minimum_direct_increment":0.0502,
+  "incoming_primary_normalized_response_range":[1.0062,1.06],
+  "intended_scalar_predictions":{"large_gap":5,"dense":2,"weaker_direct":5,"fixed_budget":4},
+  "prediction_scope":"Conditional on affine response reduction and exact accessible-band/source-retention checks; table records transfer failures separately.",
+  "weaker_direct_minimum_increment":0.01,
+  "compatibility_rule":{
+    "form":"12*primary_amplifier_contribution + partner_amplifier_contribution <= 0.648*initial_scalar_scale",
+    "rule_rows":1,"features":2,"item_specific_exceptions":0,
+    "semantic_scope":"Research admission budget over two actual component amplitude contributions; it changes gear access, not native combat physics. Old primary amplifier contribution is zero, so all old crosses remain legal.",
+    "status":"Theoretical validation pending before final future-design freeze; if invalid, preserve the failure instead of tuning from native outcomes."
+  },
+  "calibration":{"stat_points":[0,250,100,500],"fit_points":[0,250],"validation_points":[100,500],"seed":810100001,"iterations":64,"allocation_validation":"Same positive total bonus split across the two actual slots; unchanged total response/control checked."},
+  "execution":{"workers_max":64,"old_runs_read_only":true,"future_design_freeze":"Per-context native scale and all candidate configurations frozen after calibration, before any confirmation outcomes.","confirmation_seed":820000001,"confirmation_iterations":512,"no_outcome_threshold_retuning":true},
+  "aggregation":"Matched ecology/update family is scientific unit. Class-equal faction summaries; combat seeds quantify simulation noise only. Unsupported/incomplete checkpoints are not_run, never zero capacity.",
+  "scope_limits":"All56 have a successful support smoke, not capacity results yet. HighOrder regeneration and Gnome non-mana pool racial omissions remain flagged. Weapon-speed, mana-generation and true item-trigger/pet interactions require independent native family validation; three stat parameter ranges do not count as mechanism diversity."
+}

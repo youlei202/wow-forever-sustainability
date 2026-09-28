@@ -1,0 +1,256 @@
+schema_version: 1
+status: development_source_defined_not_confirmed
+engine:
+  repository: https://github.com/sage3648/mythicsim-forever-engine
+  commit: 17d75ccc8c67d027ae0088243ea3ee806d406847
+  root_env: WOWFS_ENGINE_ROOT
+  ruleset: RulesetForever
+  interpretation: community_implemented_forever_beta_not_live_server_validation
+  item_database: assets/database/db.json
+
+character:
+  class: ClassWarrior
+  level: 60
+  discovery_race: RaceHuman
+  confirmation_races: [RaceHuman, RaceOrc]
+  talents: 30305013-050520035150310051
+  starting_rage: 0
+  queue_delay_ms: 250
+  stance: WarriorStanceBerserker
+  shout: WarriorShoutBattle
+  base_equipment_source: ui/warrior/gear_sets/phase_1.gear.json
+  # The source preset is converted to explicit slots before native execution.
+  base_equipment:
+    head: 12640
+    neck: 18404
+    shoulder: 12927
+    back: 18541
+    chest: 11726
+    wrist: 19146
+    hands: 14551
+    waist: 19137
+    legs: 14554
+    feet: 14616
+    finger1: 17063
+    finger2: 18821
+    trinket1: 11815
+    trinket2: 13965
+    main_hand: 17075
+    off_hand: 18832
+    ranged: 17069
+  enchants: none
+  consumes: none
+  external_buffs: none
+  equipment_legality: validate_native_item_type_hand_type_unique_and_class_before_run
+  scope_note: Counterfactual mixtures of existing native items; database phase labels are not verified release chronology.
+
+tasks:
+  - id: sustained
+    duration_seconds: 180
+    targets: 1
+    target_level: 63
+    target_armor: 3731
+    execute_proportion_20: 0.20
+  - id: short_burst
+    duration_seconds: 30
+    targets: 1
+    target_level: 63
+    target_armor: 3731
+    execute_proportion_20: 0.20
+  - id: four_target
+    duration_seconds: 90
+    targets: 4
+    target_level: 63
+    target_armor: 3731
+    execute_proportion_20: 0.20
+  - id: high_armor
+    duration_seconds: 180
+    targets: 1
+    target_level: 63
+    target_armor: 10000
+    execute_proportion_20: 0.20
+task_scope: Duration-based damage tasks with native target armor and target counts; no survival or defensive-pressure inference.
+
+strategies:
+  - id: native_no_reck
+    source: ui/warrior/apls/dps_no_reck.apl.json
+    transformation: none
+  - id: native_reck
+    source: ui/warrior/apls/dps_reck.apl.json
+    transformation: none
+  - id: rage_conserve
+    source: ui/warrior/apls/dps_no_reck.apl.json
+    transformation:
+      description: Increase the rage reserve for queued attacks and filler without changing talent points or abilities.
+      action_rage_thresholds:
+        - spell_id: 25286
+          tag: 1
+          old: 40
+          new: 70
+        - spell_id: 20569
+          tag: 1
+          old: 40
+          new: 70
+        - spell_id: 7373
+          old: 80
+          new: 95
+
+sampling:
+  discovery_iterations: 32
+  confirmation_iterations: [128, 512]
+  confirmation_new_seeds: true
+  discovery_seed_start: 24092401
+  confirmation_seed_start: 92427001
+  initial_pools: [frequency_extra, resource_heroism, burst_shared]
+  expansion_gate: native_smoke_and_representative_effect_toggle_success
+  exhaustive_per_pool: true
+  configurations_per_pool_before_legality_filter: 16
+  total_pools: 12
+  denominator_note: Source-defined overlapping finite domains, not random independent equipment ecologies; report deduplicated physical configurations and pool incidences separately.
+
+# Four binary variable slots per domain. All identifiers refer to existing items.
+# Fixed overrides replace the base before these alternatives are enumerated.
+pools:
+  - id: frequency_extra
+    family: attack_event_feedback
+    fixed: {legs: 22385}
+    slots:
+      main_hand: [11684, 17075]
+      off_hand: [871, 18832]
+      trinket1: [11815, 18537]
+      neck: [18404, 17111]
+  - id: frequency_haste
+    family: attack_event_feedback
+    fixed: {legs: 22385}
+    slots:
+      main_hand: [17112, 18203]
+      off_hand: [12590, 18832]
+      trinket1: [11815, 18537]
+      hands: [14551, 19686]
+  - id: frequency_crit
+    family: attack_event_feedback
+    fixed: {trinket1: 11815}
+    slots:
+      main_hand: [17112, 17075]
+      off_hand: [12590, 871]
+      trinket2: [13965, 18537]
+      legs: [14554, 22385]
+  - id: frequency_multitarget
+    family: target_count_and_proc_masks
+    fixed: {legs: 22385}
+    slots:
+      main_hand: [12794, 11684]
+      off_hand: [12590, 871]
+      trinket1: [11815, 19289]
+      neck: [17111, 18404]
+  - id: resource_heroism
+    family: resource_feedback
+    fixed: {head: 21999, shoulder: 22001, wrist: 21996, legs: 22385}
+    slots:
+      chest: [21997, 11726]
+      main_hand: [11684, 17112]
+      off_hand: [871, 12590]
+      trinket2: [19951, 13965]
+  - id: resource_cost
+    family: resource_feedback
+    fixed: {head: 21999, shoulder: 22001, wrist: 21996, legs: 22385, main_hand: 11684}
+    slots:
+      chest: [21997, 11726]
+      neck: [19577, 18404]
+      off_hand: [871, 18832]
+      trinket2: [19951, 13965]
+  - id: resource_hit
+    family: resource_feedback
+    fixed: {head: 21999, shoulder: 22001, wrist: 21996, legs: 22385}
+    slots:
+      chest: [21997, 11726]
+      main_hand: [17112, 18203]
+      finger2: [18821, 18500]
+      trinket1: [11815, 18537]
+  - id: resource_active
+    family: resource_feedback
+    fixed: {neck: 19577, legs: 22385, trinket2: 13965}
+    slots:
+      main_hand: [11684, 17112]
+      off_hand: [871, 12590]
+      trinket1: [19951, 11815]
+      hands: [14551, 21998]
+  - id: burst_shared
+    family: shared_cooldown
+    fixed: {trinket2: 13965}
+    slots:
+      legs: [14554, 22385]
+      trinket1: [20130, 11815]
+      main_hand: [17112, 17075]
+      off_hand: [12590, 18832]
+  - id: burst_resource
+    family: burst_resource_tradeoff
+    fixed: {trinket2: 13965}
+    slots:
+      legs: [14554, 22385]
+      trinket1: [20130, 19951]
+      main_hand: [11684, 17112]
+      neck: [18404, 17111]
+  - id: burst_crit
+    family: burst_event_tradeoff
+    fixed: {legs: 22385}
+    slots:
+      trinket1: [20130, 13965]
+      trinket2: [19951, 11815]
+      main_hand: [18203, 17075]
+      off_hand: [12590, 871]
+  - id: burst_armor
+    family: shared_cooldown_and_accuracy
+    fixed: {trinket2: 13965}
+    slots:
+      legs: [14554, 22000]
+      main_hand: [17112, 11684]
+      trinket1: [20130, 11815]
+      hands: [14551, 21998]
+
+causal_cases:
+  - id: haste_extra
+    equipment_overrides: {main_hand: 17112, off_hand: 12590, trinket1: 11815, legs: 22385}
+    effect_a: {item_id: 17112}
+    effect_b: {item_id: 11815}
+    optional_effect_c: {item_id: 12590}
+    hypothesis: Haste adds eligible melee events and flat per-swing rage; extra-attack proc has its own 2-second internal cooldown.
+  - id: extra_resource
+    equipment_overrides: {head: 21999, shoulder: 22001, wrist: 21996, chest: 21997, main_hand: 11684, off_hand: 871, trinket1: 11815, trinket2: 19951, legs: 22385}
+    effect_a: {item_id: 11684}
+    effect_b: {set_name: Battlegear of Heroism, pieces: 4}
+    optional_effect_c: {item_id: 11815}
+    hypothesis: Extra attacks add eligible set procs; returned rage permits special attacks, with rage cap and GCD/cooldown limits.
+  - id: shared_active
+    equipment_overrides: {main_hand: 17112, off_hand: 12590, trinket1: 20130, trinket2: 13965, legs: 14554}
+    effect_a: {item_id: 20130}
+    effect_b: {item_id: 14554}
+    hypothesis: The two active stat effects share the offensive cooldown timer and cannot overlap under the native helper.
+causal_contrast:
+  pair: mu_AB_minus_mu_A_minus_mu_B_plus_mu_0
+  triple: mu_ABC_minus_mu_AB_minus_mu_AC_minus_mu_BC_plus_mu_A_plus_mu_B_plus_mu_C_minus_mu_0
+  semantics: Skip effect registration only; preserve all item IDs, weapon damage, speed, static stats, enchants, and other set tiers.
+  optimize_after_intervention: Over the same enumerated legal configuration and strategy budget.
+  inference_scope: Finite tested domains; selected effects are development hypotheses and must receive new-seed confirmation.
+
+candidate_rules:
+  status: hypotheses_only_not_frozen_test_rules
+  no_item_id_exceptions: true
+  same_information_generic_baseline: true
+  semantic_features:
+    - eligible_input_proc_mask
+    - base_speed_per_event_proc_probability
+    - output_extra_melee_event_count
+    - output_flat_rage
+    - haste_multiplier_and_aura_duration
+    - internal_cooldown_seconds
+    - shared_cooldown_resource
+    - target_count_cap
+  possible_templates:
+    - Restrict expected offspring of eligible attack events, including special attacks and set-resource feedback.
+    - Bound active-window occupancy on the shared offensive cooldown resource.
+  excluded_claims:
+    - Static attack power creates damage-proportional rage on Forever.
+    - Nominal PPM alone is a per-minute upper bound under haste and special attacks.
+    - The native engine globally blocks all recursive extra attacks.
+    - A structured constraint family exceeds its same-dimension unrestricted superclass.

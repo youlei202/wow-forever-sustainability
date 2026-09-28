@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "scope": "Development calibration of three genuine native item mechanisms. No capacity or future-release claim is inferred from this grid.",
+  "run_id": "mechanism-calibration-v1",
+  "seed": 810200001,
+  "iterations": 32,
+  "task_source": "configs/final_completion_capacity.json",
+  "tasks": ["sustained", "high_armor", "short_burst", "cooldown_window", "cleave", "endurance", "elemental", "extended_execute"],
+  "partner_validation": "Fit endpoint columns separately for every primary/context/task; predict all three interior columns per seed. This does not certify interpolation between primary grid points.",
+  "residual_tolerance": 1e-8,
+  "future_freeze": "Select matched old completion ecologies and theory mapping after this development calibration, then freeze all future designs and predictions before independent native confirmation. No outcome-based retuning after confirmation.",
+  "families": [
+    {
+      "id": "warrior_weapon_speed",
+      "class": "Warrior",
+      "races": ["Human", "Orc"],
+      "primary_slot": "main_hand",
+      "primary_item_id": 17075,
+      "primary_parameter": "weapon_speed_seconds",
+      "primary_values": [1.3, 1.7, 2.1, 2.5, 2.9, 3.3],
+      "primary_fixed_parameters": {"speed_mode": "hold_base_dps"},
+      "reference_primary_index": 3,
+      "partner_slot": "off_hand",
+      "partner_item_id": 18832,
+      "partner_parameter": "weapon_damage_scale",
+      "partner_values": [0.25, 0.5, 0.75, 1, 1.25],
+      "mechanism": "Existing Vis'kag weapon speed changes native swings, proc opportunities and Forever rage per landed swing at fixed base weapon DPS; Brutality Blade amplitude supplies legal completions."
+    },
+    {
+      "id": "mage_mana_regeneration",
+      "class": "Mage",
+      "races": ["Gnome", "Undead"],
+      "primary_slot": "neck",
+      "primary_item_id": 12103,
+      "primary_parameter": "StatMP5",
+      "primary_values": [0, 10, 25, 50, 100, 200],
+      "primary_fixed_parameters": {},
+      "reference_primary_index": 2,
+      "partner_slot": "back",
+      "partner_item_id": 13386,
+      "partner_parameter": "StatSpellPower",
+      "partner_values": [0, 100, 200, 300, 400],
+      "mechanism": "Absolute MP5 on the existing neck changes native mana ticks and the supplied mana-aware Frost APL; absolute SpellPower on the existing back supplies legal completions. Native random suffix and enchants remain."
+    },
+    {
+      "id": "rogue_periodic_proc_rate",
+      "class": "Rogue",
+      "races": ["Human", "Orc"],
+      "primary_slot": "main_hand",
+      "primary_item_id": 12795,
+      "primary_parameter": "proc_ppm",
+      "primary_values": [0, 0.25, 0.5, 1, 2, 4],
+      "primary_fixed_parameters": {},
+      "reference_primary_index": 3,
+      "partner_slot": "off_hand",
+      "partner_item_id": 12939,
+      "partner_parameter": "weapon_damage_scale",
+      "partner_values": [0.25, 0.5, 0.75, 1, 1.25],
+      "mechanism": "Real Blood Talon proc probability changes DoT applications, refresh and tick history under the Rogue energy/combo-point APL; existing Dal'Rend offhand amplitude supplies legal completions. Blood Talon replaces only the preset main hand; losing the original two-piece set is constant across this entire family. PPM0 is the explicit no-proc boundary, while both weapons retain positive base damage."
+    }
+  ]
+}

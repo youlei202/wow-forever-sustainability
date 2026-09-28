@@ -1,0 +1,7 @@
+work_root_env: WOWFS_WORK_ROOT
+work_root_default: ../../wow-forever-sustainability-work
+engine_root_env: WOWFS_ENGINE_ROOT
+engine_candidates:
+  - ../../Github/game-budget-wow-forever
+  - ../game-budget-wow-forever
+  - ../../game-budget-wow-forever-work

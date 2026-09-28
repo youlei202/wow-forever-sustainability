@@ -1,0 +1,63 @@
+# Open exploration results: track whose uses are preserved, not only the output frontier
+
+Status: exploration, challenges against the complete candidate pool, and independent confirmation are complete. The paper has not been rewritten.
+The most promising direction from this round is **how source identity and legal combinations jointly determine the space of subsequent updates**.
+Evidence now includes real equipment, complete finite domains, and new settings; this is not yet a new algorithm with established originality.
+
+## Ten research questions first
+
+1. **What was actually searched?** There were 96 settings across 12 research mechanism-hypothesis families, plus 12 settings across 6 real-equipment control families whose attributes were not modified: 108 development settings in total. Confirmation added 4 pregenerated new settings, bringing the main study to 112. All 96 research settings were screened, and complete candidate tables were constructed for 48; all 12 real-equipment controls have complete tables. Mechanisms overlap across the 18 registered families, so they must not be described as 18 wholly new, independent mechanisms. The study executed 14,556 native physical calls and 76,740,016 battles. The 15,084 logical observation rows include reuse; after removing seed/N/debug, there are 10,758 encoded physical input designs. Smoke tests, throughput measurements, and policy-derived IDs are counted separately. The union of all observation IDs is 126, which must not be presented as 126 primary ecosystems.
+
+2. **Which finding is the strongest candidate for a new paper's central result?** The real trinket/off-hand case is the strongest: the task-optimal outputs after the two first releases are almost identical, as are the unlabeled summaries of source-use quality. Yet when every released item's use must be preserved, the remaining number of update rounds is **0 versus 1**. The issue involves both resource sufficiency and **which old item still has which legal route to usefulness, and which combinations a repair item activates**. A second real-equipment case involving gloves gives **1 versus 2**, supporting this research direction.
+
+3. **Which decision does this change?** When choosing between Second Wind and Spellbound Tome as the first release, long-fight output alone in local development/confirmation slightly favors the former. Releasing the latter first, however, permits a subsequent addition of Draconic Infused Emblem while preserving the usefulness of the old Eye of the Beast. After releasing Second Wind first, adding Emblem makes Eye fall behind on both tasks; adding Tome as a repair then activates a legal combination that exceeds the cap. Specific sources and combinations must be examined. **This does not establish that all greedy methods fail**: on the complete candidate pool, equally weighted current gain and two-step lookahead already find a good two-round path.
+
+4. **Are the conditions matched?** The two first-release options use the same complete candidate pool, information, task weights, total release budget of 12, minimum gain, power cap, and usefulness requirements. The unchosen first-release option remains in the candidate pool. At most one item per round and at most two items per round are analyzed separately, and the difference persists under both permissions. Every old and new source is checked individually, and every activated legal combination is retained. Removing source-retention requirements gives remaining capacities of 1 for both trinket branches and 3 for both glove branches. The better option receives no extra candidates or permissions.
+
+5. **Which ideas did not hold up?** Most apparent advantages of exact planning over simple methods were actually gains from splitting improvements: the smallest-qualifying-gain baseline matched all 46/46 apparent advantages in the initial screen. After further challenges on the complete development tables, most remaining differences in round counts did not yield higher terminal gain. Batch-release advantages in two Shaman groups disappeared when omitted weak candidates were restored. The original Magister signal at e=1% disappeared under 4,096 new development seeds; the subsequently confirmed hypothesis used e=0.5%, openly disclosed and frozen again. The Druid Starfire mana guard did not cause the selected long-fight interaction: that task never cast Starfire. Nonlinearity, a matrix having rank other than one, and cross-task effects do not automatically constitute an effective main result.
+
+6. **What was independently confirmed?** After freezing 8 settings, all physical configurations, source code/binaries, reference equipment, N, seeds, thresholds, paths, and decision rules, confirmation ran 960 physical cells and 72,351,744 new battles. Each real-equipment case used 131,072 seed/cell, and the research variants used 32,768. The campaign-wide alpha=0.05 was divided into 0.0125 for each of 4 claims, then divided between local and new settings; failed results did not trigger additional sampling. Of the 8 frozen settings, 7 passed every condition and 1 explicitly failed to transfer. This confirmation uses approximate simultaneous paired-t inference within a fixed finite simulator domain, not a distribution-free guarantee or validation on live servers.
+
+7. **Are there useful multi-task or new–new interactions?** Yes. The real-equipment cases use differences in source usefulness between 30-second and 180-second tasks; matching frontiers does not imply matching usefulness for each source. In the research attribute variants, Druid mana–damage complementarity and Mage penetration saturation can make a combination exceed the cap even though each item is safe individually and the additive prediction is safe. Reverse controls also exist: repeated stacking of penetration or mana produces negative interaction. These change admission decisions at a particular frozen threshold; they do not establish a universally new mechanism.
+
+8. **Do the findings depend on removed combinations, weak baselines, or post hoc thresholds?** Confirmation neither removed configuration cells nor reselected references based on outcomes. The physical domain is complete, and first-round matching uses a two-sided simultaneous equivalence test with a per-task margin of 0.25%. Candidate restoration and stronger baselines did overturn many development results. The research variants' 4.3%/5.5% caps and the gloves' e=0.5% were local targets selected during development, disclosed honestly, and frozen before sampling. They must not be portrayed as natural constants chosen without selection. Real equipment retains its native database attributes; the research variants are explicitly not actually released equipment.
+
+9. **What should be pursued next?** Focus on when a state retaining source, task, and combination identities is sufficient to determine future feasibility. Study auditable state compression and screening certificates, and compare against simple methods that actually succeed. Prioritize broader external validation across real equipment and tasks over further race counts using the same template. Before writing a new paper, complete an originality review targeted to this problem, then decide which new theorem or algorithm is needed. R5 remains the existing theoretical foundation and has not been silently replaced.
+
+10. **What is not supported now?** The evidence does not support claims of universal superiority for a new planning algorithm, permanent infinite capacity, coverage of all classes and races, optimality over a continuous design domain, repairability or nonrepairability at arbitrary release widths, complete PvP/healing/survival effects, or exact predictions for live servers. The 7/8 result is not a success rate from random sampling: these are 4 selected local findings, each with one previously unseen setting. Originality and generality sufficient to promise a top-conference main result have not yet been established.
+
+## Result one: the same frontier preserves different sources
+
+Capacity means the number of minimum-gain update rounds still possible **after the first release**, excluding the first release itself.
+The two tasks have equal weights. Each round must improve at least one task by 1% of the fixed old reference, and each released source must remain near-optimal on at least one task.
+The numbers are results where the capacity lower and upper bounds coincide under simultaneous intervals over the complete candidate domain.
+
+| Real-equipment case | Worse / better first release | Remaining capacity with usefulness retention | Remaining capacity with value requirements only | New setting |
+|---|---|---:|---:|---|
+| Gnome Mage trinket/off-hand | Second Wind / Spellbound Tome | 0 / 1 | 1 / 1 | Also confirmed |
+| Undead Mage gloves | Arcanist Gloves / Sorcerer's Gloves | 1 / 2 | 3 / 3 | Also confirmed |
+
+Every result above holds for both B=1 and B=2. The trinket settings use cap=1.03 and e=.01; the gloves use cap=1.10 and e=.005. The complete candidate pools contain 14 and 16 unreleased components, respectively, all included. The new settings slightly alter task durations according to frozen random rules while leaving equipment attributes unchanged.
+
+For the local trinket case, the first-release long-fight frontiers differ by approximately **0.0061 percentage points**. The simultaneous upper bound is approximately **0.0657 percentage points**, below the prespecified 0.25. The sorted source-use qualities after either first release are [0.5, 1, 1]; their minima, sums, and histograms are identical, but **the source labels differ**. Preserving Eye's usefulness in the long fight allows the next item, Emblem, which favors the short fight, to be added. Removing source labels loses this information. This is not a counterexample in which the per-source usefulness profiles are also identical.
+
+Counterevidence matters equally: the original glove parameter e=.01 did not reproduce, and equally weighted current gain already succeeded on the complete trinket pool. The central question should therefore concern the information required by states and certificates; a planner matched by simple methods does not supply the contribution. See `RESEARCH_JUDGMENT.md`, `THEORY_BACKLOG.md`, and `confirmation/CLAIM_01..04.json`.
+
+## Result two: composition budgets must be checked, but nonlinearity does not imply a decision effect
+
+The table reports mean output gains relative to the old reference; decisions use the preallocated simultaneous intervals. Positive and negative controls share their prespecified contrast family.
+
+| Research variant | Fixed cap increase | Additive prediction | Actual joint gain | Conclusion |
+|---|---:|---:|---:|---|
+| Mage penetration, local | 4.3% | 3.484% | 5.222% | Additivity misses a cap violation; confirmed |
+| Mage penetration, new setting | 4.3% | 1.863% | 3.709% | Joint combination is also safe; cap-violation conclusion did not transfer |
+| Druid mana, local | 5.5% | 4.857% | 5.998% | Additivity misses a cap violation; confirmed |
+| Druid mana, new setting | 5.5% | 5.004% | 6.064% | Additivity misses a cap violation; confirmed |
+
+The interaction in the new Mage setting is actually larger, approximately 1.846% versus approximately 1.738% locally, yet it does not cross the cap. The simultaneous interval for the joint cap-safety margin is **[0.481%, 0.700%]** of the old reference. This directly refutes the idea that stronger interaction necessarily provides stronger support for a design claim. The positive Druid interaction arises from the combination of resources, per-cast damage, and cast allocation; the control that repeatedly adds resources has negative interaction. See `DEEP_JOINT_MECHANISM_AUDIT.md` and the final mechanism explanation and figures.
+
+## Review order and data scope
+
+Read this file first, followed by `RESEARCH_JUDGMENT.md`, `INDEPENDENT_AUDIT.md`, `CONFIRMED_CLAIMS.json`, and `EVIDENCE_LEDGER.csv`. Figure text is in English, and every figure has a data table and vector output. All negative, unresolved, and unexecuted branches are recorded in `NEGATIVE_AND_UNRESOLVED.csv`; missing results are not filled with zeros.
+
+The compressed review bundle contains frozen designs, the complete index, compact means/covariances, code, and audits. It does not include tens of millions of raw seed samples or binaries. Large datasets remain in the work directory. `OBSERVATION_INDEX.jsonl` provides input/output hashes and absolute paths, and `REPRODUCE.md` provides the execution chain from frozen inputs to conclusions. The earlier R1–R6 data and final completion-capacity data have not been overwritten or rewritten.

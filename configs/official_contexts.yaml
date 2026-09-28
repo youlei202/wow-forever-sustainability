@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "purpose": "Official legality target; this is not simulator coverage",
+  "verification": {
+    "status": "verified_official_page",
+    "observed_date": "2026-09-24",
+    "url": "https://news.blizzard.com/en-us/article/24304075/create-the-hero-you-want-to-be-in-world-of-warcraft-forever",
+    "evidence_manifest": "provenance/official_sources.json",
+    "source_sections": ["Horde Race and Class Combinations", "Alliance Race and Class Combinations"],
+    "race_alias_note": "The two official table rows called Skyborne are expanded using the faction-specific headings in the same page."
+  },
+  "expected_counts": {"total": 56, "Alliance": 28, "Horde": 28, "classes": 9},
+  "classes": ["Warrior", "Rogue", "Hunter", "Mage", "Warlock", "Priest", "Paladin", "Shaman", "Druid"],
+  "factions": {
+    "Alliance": [
+      {"race": "Dwarf", "classes": ["Hunter", "Paladin", "Priest", "Rogue", "Shaman", "Warrior"]},
+      {"race": "Gnome", "classes": ["Mage", "Priest", "Rogue", "Warlock", "Warrior"]},
+      {"race": "Human", "classes": ["Hunter", "Mage", "Paladin", "Priest", "Rogue", "Warlock", "Warrior"]},
+      {"race": "Night Elf", "classes": ["Druid", "Hunter", "Priest", "Rogue", "Warrior"]},
+      {"race": "High Order Skyborne", "classes": ["Druid", "Hunter", "Mage", "Rogue", "Warrior"]}
+    ],
+    "Horde": [
+      {"race": "Orc", "classes": ["Hunter", "Mage", "Rogue", "Shaman", "Warlock", "Warrior"]},
+      {"race": "Tauren", "classes": ["Druid", "Hunter", "Shaman", "Warrior"]},
+      {"race": "Troll", "classes": ["Hunter", "Mage", "Priest", "Rogue", "Shaman", "Warlock", "Warrior"]},
+      {"race": "Undead", "classes": ["Mage", "Paladin", "Priest", "Rogue", "Warlock", "Warrior"]},
+      {"race": "Windshaper Skyborne", "classes": ["Druid", "Hunter", "Rogue", "Shaman", "Warrior"]}
+    ]
+  }
+}

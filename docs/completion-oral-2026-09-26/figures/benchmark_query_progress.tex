@@ -1,0 +1,34 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{gapblue}{HTML}{4477AA}
+\definecolor{densered}{HTML}{EE7733}
+\definecolor{directgreen}{HTML}{228833}
+\definecolor{budgetpurple}{HTML}{AA3377}
+\definecolor{inkgray}{HTML}{343A40}
+\definecolor{gridgray}{HTML}{DEE3E8}
+\begin{document}
+\begin{tikzpicture}
+\begin{loglogaxis}[width=10.3cm,height=6.9cm,font=\small,
+ title={Repeated targets: preparation cost and correct answers},
+ title style={font=\small,align=center},
+ xlabel={Summed elapsed work over matched histories (seconds)},
+ ylabel={Cumulative resolved target queries},
+ grid=both,grid style={gridgray},axis line style={inkgray},
+ legend style={at={(.5,-.24)},anchor=north,draw=none,font=\footnotesize,legend columns=2}]
+\addplot[thick,gapblue,mark=o] table[x=seconds,y=correct,col sep=comma]{queries_reference_fresh.csv};
+\addlegendentry{Reference fresh}
+\addplot[thick,gapblue,dashed,mark=triangle] table[x=seconds,y=correct,col sep=comma]{queries_reference_cached.csv};
+\addlegendentry{Reference cached}
+\addplot[thick,budgetpurple,mark=square*] table[x=seconds,y=correct,col sep=comma]{queries_reference_interface.csv};
+\addlegendentry{Reference interface}
+\addplot[thick,directgreen,mark=*] table[x=seconds,y=correct,col sep=comma]{queries_sat_incremental.csv};
+\addlegendentry{SAT incremental + cache}
+\addplot[thick,densered,mark=diamond*] table[x=seconds,y=correct,col sep=comma]{queries_sat_interface.csv};
+\addlegendentry{SAT interface}
+\addplot[thick,inkgray,dashed,mark=triangle*] table[x=seconds,y=correct,col sep=comma]{queries_sat_maximal_cache.csv};
+\addlegendentry{SAT maximal cache}
+\end{loglogaxis}
+\end{tikzpicture}
+\end{document}

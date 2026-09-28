@@ -1,0 +1,2718 @@
+schema_version: 1
+status: source_design_frozen_before_heldout_combat_rules_require_manifest_freeze
+engine_commit: 17d75ccc8c67d027ae0088243ea3ee806d406847
+inherits: configs/r2_discovery.yaml
+races:
+- RaceHuman
+- RaceOrc
+faction_pairing: Same neutral native item proposals and policies; race held fixed within trajectory.
+rounds: 20
+items_per_round: 1
+sequence_count_per_context: 8
+physical_class_faction_trajectories: 16
+scope: Finite native existing-item counterfactual arrivals, not a twenty-release historical reconstruction.
+initial_catalogue:
+  preserve_development_configurations: true
+  development_unique_configurations: 173
+  base_equipment_overrides:
+    legs: 22385
+  variable_slots:
+    main_hand:
+    - 11684
+    - 17112
+    off_hand:
+    - 871
+    - 12590
+    trinket1:
+    - 11815
+    - 19951
+    trinket2:
+    - 13965
+    - 20130
+  include_all_initial_cartesian_combinations: true
+catalogue_expansion:
+  arrival_slots:
+  - main_hand
+  - off_hand
+  construction: Union of all 173 original development configurations and the cumulative four-slot Cartesian product.
+  final_new_domain_configurations_per_sequence: 576
+  maximum_union_with_development_per_sequence: 749
+  all_old_configurations_retained_in_reference_catalogue: true
+  no_future_response_access_for_decision: true
+  simulation_cache_may_share_identical_physical_inputs: true
+fixed_grammar_catalogue:
+  main_hand:
+  - 18671
+  - 11744
+  - 810
+  - 11902
+  - 1728
+  - 11603
+  - 11817
+  - 6622
+  - 17705
+  - 17068
+  - 19170
+  - 13246
+  off_hand:
+  - 14555
+  - 14487
+  - 13984
+  - 9511
+  - 10761
+  - 2164
+  - 8190
+  - 17054
+  - 18816
+  - 17752
+  - 12531
+  - 2163
+expanded_grammar_catalogue:
+  main_hand:
+  - 12798
+  - 12791
+  - 12795
+  - 14576
+  - 12797
+  - 12792
+  - 11920
+  - 13218
+  off_hand:
+  - 13204
+  - 13286
+  - 19019
+  - 18202
+  - 17071
+  - 13361
+  - 19324
+  - 15814
+semantic_coordinates:
+- expected_extra_mh_requests_per_eligible_event
+- peak_attack_speed_increase
+- direct_damage_max_per_proc
+- temporary_physical_buff_family_count
+- rage_return_or_discount_per_activation
+- full_periodic_damage_per_proc
+- maximum_target_armor_reduction
+- unsupported_semantic_marker
+coordinate_definitions:
+  aggregation: Sum the eight per-item coordinates and triggered set-bonus coordinates. This is a source descriptor,
+    not a certified combat upper bound.
+  '0': Expected extra MH requests per eligible landed triggering event, PPM*base_weapon_speed/60*batch_size or fixed
+    chance*batch_size; ICD retained separately.
+  '1': Maximum native attack-speed multiplier minus one; sum is a descriptor, not the multiplicative combined multiplier.
+  '2': Maximum unmitigated direct damage per proc summed over the native target cap, without crit; includes magical
+    and physical schools.
+  '3': Number of temporary physical stat/accuracy/crit/flat-damage buff effect families; raw strengths and durations
+    remain in effect definitions.
+  '4': Maximum flat rage returned or saved per activation; active rage and cost discount have distinct raw modes.
+  '5': Full nominal periodic damage if all ticks occur once; overlap, refresh, resistance, and snapshotting alter
+    realized damage.
+  '6': Maximum raw target armor reduction; summing exclusive aura families can be loose.
+  '7': Count of effects containing unsupported semantic components; no numerical danger label.
+set_descriptors:
+- name: Battlegear of Heroism
+  pieces: 4
+  source: sim/warrior/item_sets_pve.go:185
+  coordinates:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 10
+  - 0
+  - 0
+  - 0
+  effect:
+    kind: melee_proc_rage_heal
+    ppm: 1
+    rage: 10
+    heal_min: 88
+    heal_max_exclusive: 133
+    input: landed_all_melee
+    spell_id: 450589
+    no_icd: true
+rule_templates:
+  q_values:
+  - 2
+  - 4
+  - 8
+  structured_rows: First q unit vectors in rule_feature_order, which includes the static proxy. Thus static power
+    counts toward q.
+  thresholds: For each active row, maximum score over the exact t=0 reference catalogue, computed once and frozen
+    before first heldout response.
+  threshold_slack: 0
+  round_updates: Read and encode arriving public item only; never change rows, threshold, or dictionary.
+  generic_baseline: Same q, same full features and source/log access, same initial feasible structured rows; arbitrary
+    nonnegative row weights are allowed. Exact reproduction/ties are expected.
+  unsupported_syntax: Must halt feature extraction as unresolved; never replace missing semantics with zeros.
+  unsupported_semantics: The final unsupported marker is feature 9 and is not a rejection row at q=2/4/8. These
+    effects remain admitted whenever the active rows permit; unsupported components are reported and tested, not
+    silently assumed safe.
+  zero_initial_feature: Threshold zero is a declared conservative policy; rejection of first new semantic family
+    is policy behavior, not measured combat danger.
+  safety_claim: Empirical finite-domain evaluation only; no source descriptor power certificate.
+  q8_active_features:
+  - static_strike_potential
+  - expected_extra_mh_requests_per_eligible_event
+  - peak_attack_speed_increase
+  - direct_damage_max_per_proc
+  - temporary_physical_buff_family_count
+  - rage_return_or_discount_per_activation
+  - full_periodic_damage_per_proc
+  - maximum_target_armor_reduction
+freeze_protocol:
+  before_heldout_combat:
+  - Freeze this catalogue, actual numeric rule thresholds, source hashes, target/task weights, novelty resolution,
+    decision procedure, and mechanism parameter.
+  - Choose native versus intervention panel and freeze gate cooldown at t=0; common native reference remains recorded.
+  combat_seed_start: 98270001
+  development_output_access_for_design: false
+  source_only_design: true
+  new_seed_confirmation_required: true
+  response_adaptive_item_selection: false
+  source_assumptions: Eight deterministic source-defined draws are not eight independent random game ecologies;
+    report paired sequences and shared catalogues.
+sequences:
+- id: fixed_random_0
+  generator: fixed_random
+  draw_seed: 782600
+  arrivals:
+  - item_id: 11603
+    slot: main_hand
+    round: 1
+  - item_id: 1728
+    slot: main_hand
+    round: 2
+  - item_id: 9511
+    slot: off_hand
+    round: 3
+  - item_id: 18671
+    slot: main_hand
+    round: 4
+  - item_id: 17054
+    slot: off_hand
+    round: 5
+  - item_id: 14487
+    slot: off_hand
+    round: 6
+  - item_id: 11902
+    slot: main_hand
+    round: 7
+  - item_id: 17068
+    slot: main_hand
+    round: 8
+  - item_id: 8190
+    slot: off_hand
+    round: 9
+  - item_id: 11744
+    slot: main_hand
+    round: 10
+  - item_id: 13984
+    slot: off_hand
+    round: 11
+  - item_id: 10761
+    slot: off_hand
+    round: 12
+  - item_id: 17752
+    slot: off_hand
+    round: 13
+  - item_id: 14555
+    slot: off_hand
+    round: 14
+  - item_id: 11817
+    slot: main_hand
+    round: 15
+  - item_id: 13246
+    slot: main_hand
+    round: 16
+  - item_id: 19170
+    slot: main_hand
+    round: 17
+  - item_id: 2163
+    slot: off_hand
+    round: 18
+  - item_id: 2164
+    slot: off_hand
+    round: 19
+  - item_id: 6622
+    slot: main_hand
+    round: 20
+- id: fixed_random_1
+  generator: fixed_random
+  draw_seed: 782601
+  arrivals:
+  - item_id: 13984
+    slot: off_hand
+    round: 1
+  - item_id: 8190
+    slot: off_hand
+    round: 2
+  - item_id: 14487
+    slot: off_hand
+    round: 3
+  - item_id: 11744
+    slot: main_hand
+    round: 4
+  - item_id: 17054
+    slot: off_hand
+    round: 5
+  - item_id: 18816
+    slot: off_hand
+    round: 6
+  - item_id: 6622
+    slot: main_hand
+    round: 7
+  - item_id: 12531
+    slot: off_hand
+    round: 8
+  - item_id: 19170
+    slot: main_hand
+    round: 9
+  - item_id: 17068
+    slot: main_hand
+    round: 10
+  - item_id: 11902
+    slot: main_hand
+    round: 11
+  - item_id: 1728
+    slot: main_hand
+    round: 12
+  - item_id: 11817
+    slot: main_hand
+    round: 13
+  - item_id: 9511
+    slot: off_hand
+    round: 14
+  - item_id: 11603
+    slot: main_hand
+    round: 15
+  - item_id: 14555
+    slot: off_hand
+    round: 16
+  - item_id: 17752
+    slot: off_hand
+    round: 17
+  - item_id: 13246
+    slot: main_hand
+    round: 18
+  - item_id: 10761
+    slot: off_hand
+    round: 19
+  - item_id: 18671
+    slot: main_hand
+    round: 20
+- id: fixed_proc_first_0
+  generator: fixed_proc_first
+  draw_seed: 782610
+  arrivals:
+  - item_id: 11744
+    slot: main_hand
+    round: 1
+  - item_id: 810
+    slot: main_hand
+    round: 2
+  - item_id: 18816
+    slot: off_hand
+    round: 3
+  - item_id: 10761
+    slot: off_hand
+    round: 4
+  - item_id: 11902
+    slot: main_hand
+    round: 5
+  - item_id: 17054
+    slot: off_hand
+    round: 6
+  - item_id: 13246
+    slot: main_hand
+    round: 7
+  - item_id: 1728
+    slot: main_hand
+    round: 8
+  - item_id: 14555
+    slot: off_hand
+    round: 9
+  - item_id: 6622
+    slot: main_hand
+    round: 10
+  - item_id: 13984
+    slot: off_hand
+    round: 11
+  - item_id: 2164
+    slot: off_hand
+    round: 12
+  - item_id: 9511
+    slot: off_hand
+    round: 13
+  - item_id: 17752
+    slot: off_hand
+    round: 14
+  - item_id: 11603
+    slot: main_hand
+    round: 15
+  - item_id: 19170
+    slot: main_hand
+    round: 16
+  - item_id: 14487
+    slot: off_hand
+    round: 17
+  - item_id: 2163
+    slot: off_hand
+    round: 18
+  - item_id: 18671
+    slot: main_hand
+    round: 19
+  - item_id: 11817
+    slot: main_hand
+    round: 20
+- id: fixed_proc_first_1
+  generator: fixed_proc_first
+  draw_seed: 782611
+  arrivals:
+  - item_id: 810
+    slot: main_hand
+    round: 1
+  - item_id: 18816
+    slot: off_hand
+    round: 2
+  - item_id: 10761
+    slot: off_hand
+    round: 3
+  - item_id: 19170
+    slot: main_hand
+    round: 4
+  - item_id: 9511
+    slot: off_hand
+    round: 5
+  - item_id: 18671
+    slot: main_hand
+    round: 6
+  - item_id: 17054
+    slot: off_hand
+    round: 7
+  - item_id: 14555
+    slot: off_hand
+    round: 8
+  - item_id: 17752
+    slot: off_hand
+    round: 9
+  - item_id: 2164
+    slot: off_hand
+    round: 10
+  - item_id: 11817
+    slot: main_hand
+    round: 11
+  - item_id: 17705
+    slot: main_hand
+    round: 12
+  - item_id: 12531
+    slot: off_hand
+    round: 13
+  - item_id: 11603
+    slot: main_hand
+    round: 14
+  - item_id: 14487
+    slot: off_hand
+    round: 15
+  - item_id: 2163
+    slot: off_hand
+    round: 16
+  - item_id: 17068
+    slot: main_hand
+    round: 17
+  - item_id: 11902
+    slot: main_hand
+    round: 18
+  - item_id: 1728
+    slot: main_hand
+    round: 19
+  - item_id: 13246
+    slot: main_hand
+    round: 20
+- id: expanded_interleaved_0
+  generator: expanded_interleaved
+  draw_seed: 782620
+  arrivals:
+  - item_id: 11744
+    slot: main_hand
+    round: 1
+  - item_id: 10761
+    slot: off_hand
+    round: 2
+  - item_id: 14487
+    slot: off_hand
+    round: 3
+  - item_id: 2163
+    slot: off_hand
+    round: 4
+  - item_id: 19019
+    slot: off_hand
+    round: 5
+  - item_id: 6622
+    slot: main_hand
+    round: 6
+  - item_id: 13984
+    slot: off_hand
+    round: 7
+  - item_id: 14555
+    slot: off_hand
+    round: 8
+  - item_id: 18671
+    slot: main_hand
+    round: 9
+  - item_id: 17071
+    slot: off_hand
+    round: 10
+  - item_id: 11902
+    slot: main_hand
+    round: 11
+  - item_id: 13246
+    slot: main_hand
+    round: 12
+  - item_id: 17068
+    slot: main_hand
+    round: 13
+  - item_id: 18816
+    slot: off_hand
+    round: 14
+  - item_id: 12797
+    slot: main_hand
+    round: 15
+  - item_id: 1728
+    slot: main_hand
+    round: 16
+  - item_id: 17752
+    slot: off_hand
+    round: 17
+  - item_id: 17705
+    slot: main_hand
+    round: 18
+  - item_id: 9511
+    slot: off_hand
+    round: 19
+  - item_id: 12795
+    slot: main_hand
+    round: 20
+- id: expanded_interleaved_1
+  generator: expanded_interleaved
+  draw_seed: 782621
+  arrivals:
+  - item_id: 6622
+    slot: main_hand
+    round: 1
+  - item_id: 13984
+    slot: off_hand
+    round: 2
+  - item_id: 14555
+    slot: off_hand
+    round: 3
+  - item_id: 18816
+    slot: off_hand
+    round: 4
+  - item_id: 15814
+    slot: off_hand
+    round: 5
+  - item_id: 9511
+    slot: off_hand
+    round: 6
+  - item_id: 13246
+    slot: main_hand
+    round: 7
+  - item_id: 1728
+    slot: main_hand
+    round: 8
+  - item_id: 14487
+    slot: off_hand
+    round: 9
+  - item_id: 12797
+    slot: main_hand
+    round: 10
+  - item_id: 11744
+    slot: main_hand
+    round: 11
+  - item_id: 19170
+    slot: main_hand
+    round: 12
+  - item_id: 11902
+    slot: main_hand
+    round: 13
+  - item_id: 10761
+    slot: off_hand
+    round: 14
+  - item_id: 18202
+    slot: off_hand
+    round: 15
+  - item_id: 810
+    slot: main_hand
+    round: 16
+  - item_id: 12531
+    slot: off_hand
+    round: 17
+  - item_id: 11817
+    slot: main_hand
+    round: 18
+  - item_id: 2164
+    slot: off_hand
+    round: 19
+  - item_id: 12795
+    slot: main_hand
+    round: 20
+- id: expanded_late_0
+  generator: expanded_late
+  draw_seed: 782630
+  arrivals:
+  - item_id: 1728
+    slot: main_hand
+    round: 1
+  - item_id: 10761
+    slot: off_hand
+    round: 2
+  - item_id: 11817
+    slot: main_hand
+    round: 3
+  - item_id: 14555
+    slot: off_hand
+    round: 4
+  - item_id: 8190
+    slot: off_hand
+    round: 5
+  - item_id: 2163
+    slot: off_hand
+    round: 6
+  - item_id: 9511
+    slot: off_hand
+    round: 7
+  - item_id: 13984
+    slot: off_hand
+    round: 8
+  - item_id: 19170
+    slot: main_hand
+    round: 9
+  - item_id: 17752
+    slot: off_hand
+    round: 10
+  - item_id: 13246
+    slot: main_hand
+    round: 11
+  - item_id: 11902
+    slot: main_hand
+    round: 12
+  - item_id: 17068
+    slot: main_hand
+    round: 13
+  - item_id: 14487
+    slot: off_hand
+    round: 14
+  - item_id: 11603
+    slot: main_hand
+    round: 15
+  - item_id: 11744
+    slot: main_hand
+    round: 16
+  - item_id: 11920
+    slot: main_hand
+    round: 17
+  - item_id: 13204
+    slot: off_hand
+    round: 18
+  - item_id: 12792
+    slot: main_hand
+    round: 19
+  - item_id: 13286
+    slot: off_hand
+    round: 20
+- id: expanded_late_1
+  generator: expanded_late
+  draw_seed: 782631
+  arrivals:
+  - item_id: 18671
+    slot: main_hand
+    round: 1
+  - item_id: 810
+    slot: main_hand
+    round: 2
+  - item_id: 2163
+    slot: off_hand
+    round: 3
+  - item_id: 17068
+    slot: main_hand
+    round: 4
+  - item_id: 11817
+    slot: main_hand
+    round: 5
+  - item_id: 8190
+    slot: off_hand
+    round: 6
+  - item_id: 11744
+    slot: main_hand
+    round: 7
+  - item_id: 19170
+    slot: main_hand
+    round: 8
+  - item_id: 14487
+    slot: off_hand
+    round: 9
+  - item_id: 17054
+    slot: off_hand
+    round: 10
+  - item_id: 14555
+    slot: off_hand
+    round: 11
+  - item_id: 13984
+    slot: off_hand
+    round: 12
+  - item_id: 11603
+    slot: main_hand
+    round: 13
+  - item_id: 2164
+    slot: off_hand
+    round: 14
+  - item_id: 18816
+    slot: off_hand
+    round: 15
+  - item_id: 1728
+    slot: main_hand
+    round: 16
+  - item_id: 15814
+    slot: off_hand
+    round: 17
+  - item_id: 12797
+    slot: main_hand
+    round: 18
+  - item_id: 13218
+    slot: main_hand
+    round: 19
+  - item_id: 17071
+    slot: off_hand
+    round: 20
+item_descriptors:
+  810:
+    name: Hammer of the Northern Wind
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1350
+    coordinates:
+    - 0.0
+    - 0.0
+    - 30.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.1
+    effect:
+      kind: direct_damage
+      ppm: 3.5
+      spell_id: 13439
+      school: Frost
+      defense: Magic
+      damage_min: 20.0
+      damage_max: 30.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  871:
+    name: Flurry Axe
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1099
+    coordinates:
+    - 0.047499999999999994
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.5
+    effect:
+      kind: extra_mh
+      ppm: 1.9
+      offspring: 1
+      spell_id: 18797
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+  1728:
+    name: Teebu's Blazing Longsword
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2130
+    coordinates:
+    - 0.0
+    - 0.0
+    - 150.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.9
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18086
+      school: Fire
+      defense: Magic
+      damage_min: 150.0
+      damage_max: 150.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  2163:
+    name: Shadowblade
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1916
+    coordinates:
+    - 0.0
+    - 0.0
+    - 140.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.4
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18138
+      school: Shadow
+      defense: Magic
+      damage_min: 110.0
+      damage_max: 140.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  2164:
+    name: Gut Ripper
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1316
+    coordinates:
+    - 0.0
+    - 0.0
+    - 121.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.8
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18107
+      school: Physical
+      defense: Melee
+      damage_min: 95.0
+      damage_max: 121.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: MeleeSpecial
+      output_suppresses_equip_procs: true
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  6622:
+    name: Sword of Zeal
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2111
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.8
+    effect:
+      kind: proc_physical_buff
+      ppm: 1
+      flat_physical_damage: 10
+      armor: 150
+      duration_seconds: 15
+      spell_id: 8191
+      note: Code uses 1 PPM; nearby comment says 1.8. Descriptor follows executable code.
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  8190:
+    name: Hanzo Sword
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1372
+    coordinates:
+    - 0.0
+    - 0.0
+    - 75.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.5
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 16405
+      school: Physical
+      defense: Melee
+      damage_min: 75.0
+      damage_max: 75.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: MeleeSpecial
+      output_suppresses_equip_procs: true
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  9511:
+    name: Bloodletter Scalpel
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:650
+    coordinates:
+    - 0.0
+    - 0.0
+    - 70.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.8
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18081
+      school: Physical
+      defense: Melee
+      damage_min: 60.0
+      damage_max: 70.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: MeleeSpecial
+      output_suppresses_equip_procs: true
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  10761:
+    name: Coldrage Dagger
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:770
+    coordinates:
+    - 0.0
+    - 0.0
+    - 30.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.5
+    effect:
+      kind: direct_damage
+      ppm: 2.2
+      spell_id: 13439
+      school: Frost
+      defense: Magic
+      damage_min: 20.0
+      damage_max: 30.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  11603:
+    name: Vilerend Slicer
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2366
+    coordinates:
+    - 0.0
+    - 0.0
+    - 75.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 1.4
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 16405
+      school: Physical
+      defense: Melee
+      damage_min: 75.0
+      damage_max: 75.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: MeleeSpecial
+      output_suppresses_equip_procs: true
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  11684:
+    name: Ironfoe
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1453
+    coordinates:
+    - 0.064
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.4
+    effect:
+      kind: extra_mh
+      ppm: 0.8
+      offspring: 2
+      spell_id: 15494
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+  11726:
+    name: Savage Gladiator Chain
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:11726
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: The Gladiator
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  11744:
+    name: Bloodfist
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:647
+    coordinates:
+    - 0.0
+    - 0.0
+    - 20.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.5
+    effect:
+      kind: direct_damage
+      ppm: 4.0
+      spell_id: 16433
+      school: Physical
+      defense: Melee
+      damage_min: 20.0
+      damage_max: 20.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: MeleeSpecial
+      output_suppresses_equip_procs: true
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  11815:
+    name: Hand of Justice
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2615
+    coordinates:
+    - 0.01
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: extra_mh
+      proc_probability: 0.01
+      offspring: 1
+      internal_cooldown_seconds: 2
+      spell_id: 15600
+      input: landed_all_melee
+      excluded_input_flag: SuppressEquipProcs
+  11817:
+    name: Lord General's Sword
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1553
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.6
+    effect:
+      kind: proc_physical_buff
+      ppm: 1
+      attack_power: 84
+      duration_seconds: 10
+      spell_id: 15602
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  11902:
+    name: Linken's Sword of Mastery
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1509
+    coordinates:
+    - 0.0
+    - 0.0
+    - 75.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 1.8
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18089
+      school: Nature
+      defense: Magic
+      damage_min: 45.0
+      damage_max: 75.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  11920:
+    name: Wraith Scythe
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2414
+    coordinates:
+    - 0.0
+    - 0.0
+    - 49.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.2
+    effect:
+      kind: damage_linked_heal
+      ppm: 1
+      damage_min: 49
+      damage_max: 49
+      school: Shadow
+      spell_id: 16414
+      unsupported_semantics:
+      - damage_linked_health_conversion
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  12531:
+    name: Searing Needle
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1842
+    coordinates:
+    - 0.0
+    - 0.0
+    - 60.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.8
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 16454
+      school: Fire
+      defense: Magic
+      damage_min: 60.0
+      damage_max: 60.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  12590:
+    name: Felstriker
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:962
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.7
+    effect:
+      kind: temporary_accuracy_crit
+      ppm: 1
+      melee_hit_percentage_points: 100
+      melee_crit_percentage_points: 100
+      duration_seconds: 3
+      spell_id: 16551
+  12640:
+    name: Lionheart Helm
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:12640
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  12791:
+    name: Barman Shanker
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:248
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 100.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2
+    effect:
+      kind: periodic_damage
+      ppm: 1
+      ticks: 10
+      tick_seconds: 3
+      damage_per_tick: 10
+      school: Physical
+      spell_id: 13318
+      shared_action_id_note: Distinct native DoT aura labels; common spell ID registration may alias if jointly
+        equipped. Both restricted to MH arrival slot here.
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  12792:
+    name: Volcanic Hammer
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2375
+    coordinates:
+    - 0.0
+    - 0.0
+    - 256.0
+    - 0.0
+    - 0.0
+    - 36.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.5
+    effect:
+      kind: direct_and_periodic_damage
+      ppm: 1
+      damage_min: 200
+      damage_max: 256
+      ticks: 3
+      tick_seconds: 2
+      damage_per_tick: 12
+      school: Fire
+      spell_id: 18082
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  12794:
+    name: Masterwork Stormhammer
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1614
+    coordinates:
+    - 0.0
+    - 0.0
+    - 435.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2
+    effect:
+      kind: direct_damage
+      ppm: 0.5
+      damage_min: 105
+      damage_max: 145
+      targets: 3
+      school: Nature
+      spell_id: 463946
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+  12795:
+    name: Blood Talon
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:684
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 100.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 1.3
+    effect:
+      kind: periodic_damage
+      ppm: 1
+      ticks: 10
+      tick_seconds: 3
+      damage_per_tick: 10
+      school: Physical
+      spell_id: 13318
+      shared_action_id_note: Distinct native DoT aura labels; common spell ID registration may alias if jointly
+        equipped. Both restricted to MH arrival slot here.
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  12797:
+    name: Frostguard
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1164
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.3
+    effect:
+      kind: target_slow
+      ppm: 1
+      attack_interval_multiplier: 1.25
+      move_speed_modifier: 0.3
+      duration_seconds: 5
+      unsupported_semantics:
+      - target_attack_and_movement_slow
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  12798:
+    name: Annihilator
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:170
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 495.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 1.7
+    effect:
+      kind: target_armor_reduction
+      ppm: 1
+      armor_per_stack: 165
+      max_stacks: 3
+      duration_seconds: 45
+      exclusive_resource: MinorArmorReduction
+      spell_id: 16928
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  12927:
+    name: Truestrike Shoulders
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:12927
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  13204:
+    name: Bashguuder
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:346
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 300.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.8
+    effect:
+      kind: target_armor_reduction
+      ppm: 2
+      armor_per_stack: 100
+      max_stacks: 3
+      duration_seconds: 30
+      exclusive_resource: MinorArmorReduction
+      spell_id: 17315
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  13218:
+    name: Fang of the Crystal Spider
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:933
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    set_name: Spider's Kiss
+    hand_type: 2
+    base_speed_seconds: 1.6
+    effect:
+      kind: target_slow
+      ppm: 1
+      attack_interval_multiplier: 1.1
+      duration_seconds: 10
+      unsupported_semantics:
+      - target_attack_slow
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  13246:
+    name: Argent Avenger
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:216
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.2
+    effect:
+      kind: proc_physical_buff
+      ppm: 1
+      attack_power: 100
+      additional_undead_attack_power: 100
+      duration_seconds: 10
+      spell_id: 17352
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  13286:
+    name: Rivenspike
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1794
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 300.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.9
+    effect:
+      kind: target_armor_reduction
+      ppm: 2
+      armor_per_stack: 100
+      max_stacks: 3
+      duration_seconds: 30
+      exclusive_resource: MinorArmorReduction
+      spell_id: 17315
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  13361:
+    name: Skullforge Reaver
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1946
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 210.0
+    - 0.0
+    - 1.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.5
+    effect:
+      kind: periodic_damage_linked_heal
+      ppm: 1.7
+      ticks: 10
+      tick_seconds: 1
+      damage_per_tick: 21
+      school: Shadow
+      spell_id: 17484
+      unsupported_semantics:
+      - periodic_damage_linked_health_conversion
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  13965:
+    name: Blackhand's Breadth
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:13965
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  13984:
+    name: Darrowspike
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:775
+    coordinates:
+    - 0.0
+    - 0.0
+    - 90.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.5
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18276
+      school: Frost
+      defense: Magic
+      damage_min: 90.0
+      damage_max: 90.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  14487:
+    name: Bonechill Hammer
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:715
+    coordinates:
+    - 0.0
+    - 0.0
+    - 90.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.4
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18276
+      school: Frost
+      defense: Magic
+      damage_min: 90.0
+      damage_max: 90.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  14551:
+    name: Edgemaster's Handguards
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:14551
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  14554:
+    name: Cloudkeeper Legplates
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2854
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: active_physical_buff
+      attack_power: 100
+      duration_seconds: 30
+      cooldown_seconds: 900
+      shared_resource: offensive_item
+      shared_lock_seconds: 30
+  14555:
+    name: Alcor's Sunrazor
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:165
+    coordinates:
+    - 0.0
+    - 0.0
+    - 105.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.3
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18833
+      school: Fire
+      defense: Magic
+      damage_min: 75.0
+      damage_max: 105.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  14576:
+    name: Ebon Hilt of Marduk
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:831
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 84.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.7
+    effect:
+      kind: periodic_damage
+      ppm: 1
+      ticks: 3
+      tick_seconds: 3
+      damage_per_tick: 28
+      school: Shadow
+    arrival_slot: main_hand
+    arrival_grammar: expanded
+  14616:
+    name: Bloodmail Boots
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:14616
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Bloodmail Regalia
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  15814:
+    name: Hameya's Slayer
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1321
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 80.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2
+    effect:
+      kind: periodic_damage
+      ppm: 1
+      ticks: 10
+      tick_seconds: 3
+      damage_per_tick: 8
+      school: Physical
+      spell_id: 16406
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  17054:
+    name: Joonho's Mercy
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1468
+    coordinates:
+    - 0.0
+    - 0.0
+    - 70.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.1
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 20883
+      school: Arcane
+      defense: Magic
+      damage_min: 70.0
+      damage_max: 70.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  17063:
+    name: Band of Accuria
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:17063
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  17068:
+    name: Deathbringer
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:779
+    coordinates:
+    - 0.0
+    - 0.0
+    - 140.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.9
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18138
+      school: Shadow
+      defense: Magic
+      damage_min: 110.0
+      damage_max: 140.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  17069:
+    name: Striker's Mark
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:17069
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 2.5
+    effect:
+      kind: static_only
+  17071:
+    name: Gutgore Ripper
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1240
+    coordinates:
+    - 0.0
+    - 0.0
+    - 75.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.8
+    effect:
+      kind: direct_damage_and_target_stats
+      ppm: 1
+      damage_min: 75
+      damage_max: 75
+      target_stats_reduction:
+        Agility: 25
+        Intellect: 25
+        Stamina: 25
+        Spirit: 25
+        Strength: 25
+      duration_seconds: 30
+      unsupported_semantics:
+      - target_primary_stat_changes
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  17075:
+    name: Vis'kag the Bloodletter
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2369
+    coordinates:
+    - 0.0
+    - 0.0
+    - 240.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.6
+    effect:
+      kind: direct_damage
+      ppm: 0.6
+      spell_id: 21140
+      school: Physical
+      defense: Melee
+      damage_min: 240.0
+      damage_max: 240.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: MeleeSpecial
+      output_suppresses_equip_procs: true
+  17111:
+    name: Blazefury Medallion
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2819
+    coordinates:
+    - 0.0
+    - 0.0
+    - 2.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: direct_damage
+      proc_probability: 1
+      damage_min: 2
+      damage_max: 2
+      targets: 1
+      school: Fire
+      spell_id: 7712
+      input: landed_all_melee
+      excluded_input_flag: SuppressEquipProcs
+      output_mask: Empty_for_special_input_else_DamageProc
+  17112:
+    name: Empyrean Demolisher
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:871
+    coordinates:
+    - 0.0
+    - 0.2
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.8
+    effect:
+      kind: haste
+      ppm: 1
+      haste_multiplier: 1.2
+      duration_seconds: 10
+      spell_id: 21165
+  17705:
+    name: Thrash Blade
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2208
+    coordinates:
+    - 0.045000000000000005
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.7
+    effect:
+      kind: extra_mh
+      ppm: 1
+      offspring: 1
+      spell_id: 21919
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  17752:
+    name: Satyr's Lash
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1839
+    coordinates:
+    - 0.0
+    - 0.0
+    - 85.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.7
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18205
+      school: Shadow
+      defense: Magic
+      damage_min: 55.0
+      damage_max: 85.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  18202:
+    name: Eskhandar's Left Claw
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:887
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 105.0
+    - 0.0
+    - 0.0
+    set_name: Spirit of Eskhandar
+    hand_type: 3
+    base_speed_seconds: 1.5
+    effect:
+      kind: periodic_damage
+      ppm: 1
+      ticks: 5
+      tick_seconds: 1
+      damage_per_tick: 21
+      school: Physical
+      spell_id: 22639
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  18203:
+    name: Eskhandar's Right Claw
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:922
+    coordinates:
+    - 0.0
+    - 0.1
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Spirit of Eskhandar
+    hand_type: 1
+    base_speed_seconds: 1.5
+    effect:
+      kind: haste
+      ppm: 1
+      haste_multiplier: 1.1
+      duration_seconds: 6
+      spell_id: 22640
+  18404:
+    name: Onyxia Tooth Pendant
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:18404
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  18500:
+    name: Tarnished Elven Ring
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:18500
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  18537:
+    name: Counterattack Lodestone
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:18537
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  18541:
+    name: Puissant Cape
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:18541
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  18671:
+    name: Baron Charr's Sceptre
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:279
+    coordinates:
+    - 0.0
+    - 0.0
+    - 35.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 1
+    base_speed_seconds: 2.6
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 13442
+      school: Fire
+      defense: Magic
+      damage_min: 35.0
+      damage_max: 35.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  18816:
+    name: Perdition's Blade
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1685
+    coordinates:
+    - 0.0
+    - 0.0
+    - 96.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.8
+    effect:
+      kind: direct_damage
+      ppm: 2.8
+      spell_id: 23267
+      school: Fire
+      defense: Magic
+      damage_min: 40.0
+      damage_max: 96.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: off_hand
+    arrival_grammar: fixed
+  18821:
+    name: Quick Strike Ring
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:18821
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  18832:
+    name: Brutality Blade
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:18832
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.5
+    effect:
+      kind: static_only
+  19019:
+    name: Thunderfury, Blessed Blade of the Windseeker
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2226
+    coordinates:
+    - 0.0
+    - 0.0
+    - 300.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.9
+    effect:
+      kind: direct_damage_target_debuff
+      ppm: 6
+      damage_min: 300
+      damage_max: 300
+      damage_targets: 1
+      debuff_targets: 5
+      nature_resistance_reduction: 25
+      duration_seconds: 12
+      spell_id: 21992
+      excluded_input_flag: null
+      output_mask: SpellProc|SpellDamageProc
+      unsupported_semantics:
+      - target_resistance_and_attack_speed_changes
+      - additional_nonmelee_proc_mask
+      note: Only primary hit deals 300; bounce hits deal zero and apply resistance debuff.
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  19137:
+    name: Onslaught Girdle
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:19137
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  19146:
+    name: Wristguards of Stability
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:19146
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  19170:
+    name: Ebon Hand
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:825
+    coordinates:
+    - 0.0
+    - 0.0
+    - 275.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 2.5
+    effect:
+      kind: direct_damage
+      ppm: 1.0
+      spell_id: 18211
+      school: Shadow
+      defense: Magic
+      damage_min: 125.0
+      damage_max: 275.0
+      targets: 1
+      input: landed_equipped_hand_melee
+      excluded_input_flag: SuppressWeaponProcs
+      output_mask: Empty
+      output_suppresses_equip_procs: false
+    arrival_slot: main_hand
+    arrival_grammar: fixed
+  19289:
+    name: 'Darkmoon Card: Maelstrom'
+    development_item: true
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:2546
+    coordinates:
+    - 0.0
+    - 0.0
+    - 300.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: direct_damage
+      ppm: 1
+      damage_min: 200
+      damage_max: 300
+      targets: 1
+      school: Nature
+      spell_id: 23686
+      input: landed_all_melee
+      excluded_input_flag: SuppressEquipProcs
+      output_mask: Empty
+  19324:
+    name: The Lobotomizer
+    development_item: false
+    source_syntax_supported: true
+    source: sim/common/item_effects.go:1514
+    coordinates:
+    - 0.0
+    - 0.0
+    - 300.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    set_name: null
+    hand_type: 2
+    base_speed_seconds: 1.8
+    effect:
+      kind: direct_damage_and_target_stats
+      ppm: 0.4
+      damage_min: 200
+      damage_max: 300
+      school: Physical
+      outcome: MagicHitAndCrit
+      target_stats_reduction:
+        Intellect: 25
+      duration_seconds: 30
+      unsupported_semantics:
+      - target_primary_stat_changes
+    arrival_slot: off_hand
+    arrival_grammar: expanded
+  19577:
+    name: Rage of Mugamba
+    development_item: true
+    source_syntax_supported: true
+    source: sim/warrior/items.go:93
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 2.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Vindicator's Battlegear
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: rage_cost_discount
+      rage_discount: 2
+      affected_spell: 7373
+  19686:
+    name: Primal Batskin Gloves
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:19686
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Primal Batskin
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  19951:
+    name: Gri'lek's Charm of Might
+    development_item: true
+    source_syntax_supported: true
+    source: sim/warrior/items.go:64
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 30.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Vindicator's Battlegear
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: active_rage
+      rage: 30
+      cooldown_seconds: 180
+  20130:
+    name: Diamond Flask
+    development_item: true
+    source_syntax_supported: true
+    source: sim/warrior/items.go:20
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: active_physical_buff
+      strength: 75
+      duration_seconds: 60
+      cooldown_seconds: 360
+      shared_resource: offensive_item
+      shared_lock_seconds: 60
+      spell_id: 24427
+  21996:
+    name: Bracers of Heroism
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:21996
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Battlegear of Heroism
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  21997:
+    name: Breastplate of Heroism
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:21997
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Battlegear of Heroism
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  21998:
+    name: Gauntlets of Heroism
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:21998
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Battlegear of Heroism
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  21999:
+    name: Helm of Heroism
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:21999
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Battlegear of Heroism
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  22000:
+    name: Legplates of Heroism
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:22000
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Battlegear of Heroism
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  22001:
+    name: Spaulders of Heroism
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:22001
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: Battlegear of Heroism
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+  22385:
+    name: Titanic Leggings
+    development_item: true
+    source_syntax_supported: true
+    source: assets/database/db.json:item:22385
+    coordinates:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    set_name: null
+    hand_type: null
+    base_speed_seconds: 0
+    effect:
+      kind: static_only
+limitations:
+- One arrival per round, below the requested 6–12 target; no hidden duplication of native IDs.
+- No marginal-power matching of existing items; weak new rewards can fail quality and novelty.
+- The fixed grammar permits parameter and weapon-stat changes, but the expanded grammar also changes power distributions;
+  it is not a controlled causal estimate of semantic dimension.
+- Only a subset of global game event semantics is represented by eight coordinates; unused defensive effects do
+  not create a survival result.
+- Source inspection selects hypotheses and items; no novel learning of source-known effect constants is claimed.
+rule_feature_order:
+- static_strike_potential
+- expected_extra_mh_requests_per_eligible_event
+- peak_attack_speed_increase
+- direct_damage_max_per_proc
+- temporary_physical_buff_family_count
+- rage_return_or_discount_per_activation
+- full_periodic_damage_per_proc
+- maximum_target_armor_reduction
+- unsupported_semantic_marker
+static_strike_potential:
+  definition: MH weapon DPS + 0.5 * OH weapon DPS + total item AttackPower / 14 + 2 * total item Strength / 14
+  interpretation: Source-stat heuristic proxy, not actual character DPS or native combat upper bound; ignores accuracy,
+    crit, armor, and dynamic state.
+  feature_count: 1
+  coefficient_scope: Fixed before heldout response; same proxy supplied to all methods.

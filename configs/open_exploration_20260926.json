@@ -1,0 +1,18 @@
+{
+  "campaign": "open-exploration-2026-09-26/campaign-v1",
+  "max_wall_hours": 24,
+  "workers": 48,
+  "gpu": 0,
+  "memory_soft_gib": 128,
+  "broad": {"iterations": 32, "seed_base": 928100001, "world_seed_stride": 10000, "selection": "anchors", "worlds": 96},
+  "refine": {"iterations": 256, "seed_base": 1028100001, "world_seed_stride": 10000},
+  "objectives": {
+    "V": {"gain_grid": [0.005, 0.01, 0.02], "headroom_grid": [0.03, 0.05, 0.1], "retention_tolerance_grid": [0.01, 0.03, 0.05], "gain_mass": 0.5, "retention_mass": 0.5, "task_weights": [0.5, 0.5]},
+    "H": {"scope": "Useful improvement on a fixed task with unchanged cap; report task-specific choice, source relevance and covering configurations, never infer new gameplay from labels."},
+    "C": {"status": "not_started", "scope": "Reserved alternate-objective branch if fixed-task choices provide insufficient decision effects; task weighting of legacy domain cannot be diluted."}
+  },
+  "planning": {"candidate_initial_limit": 10, "batch_sizes": [1, 2, 4], "max_seconds_per_problem": 5, "approximate_first_frontier_match_tolerance": 0.0025, "all_legal_crosses_retained": true},
+  "confirmation": {"campaign_alpha": 0.05, "max_primary_findings": 4, "alpha_per_finding": 0.0125, "unused_alpha_not_recycled": true, "seed_base": 1128100001, "n_selected_before_sampling": true, "default_n": 8192, "reference": "Frozen development-selected physical old configuration per task; confirmation samples estimate that fixed population reference.", "approximate_inference": "Paired Student-t with simultaneous finite contrasts, fixed N; not distribution-free"},
+  "holdout": {"generator_seed": 2026092707, "method": "After selecting a mechanism, deterministic independent 0.9-1.1 multiplicative perturbations to declared research overrides, retaining physical legality and fixed evaluation tasks; a separate held-out setting, not a universal claim."},
+  "interpretation": "All threshold-grid comparisons are exploratory; only prespecified held-out confirmation effects may be labeled confirmed_local. Mathematical hypotheses and search lineages are not independent proven native mechanisms."
+}

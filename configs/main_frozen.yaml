@@ -1,0 +1,19 @@
+schema_version: 1
+scope: native_forever
+split: independent_confirmation
+status: blocked_missing_engine
+horizon: 20
+sequences_per_class_faction: 20
+proposal_families: 4
+sequences_per_family: 5
+thresholds:
+  total_power_headroom: 0.05
+  epsilon_new: 0.05
+  minimum_new_task_weight: 0.05
+  epsilon_legacy: 0.05
+  minimum_legacy_task_weight: 0.05
+  portfolio_limit: 4
+  epsilon_portfolio: 0.05
+  alpha_portfolio: 0.05
+  delta_behavior: null
+note: "Protocol template only; cannot freeze until engine, tasks, behavior scale and methods are established."

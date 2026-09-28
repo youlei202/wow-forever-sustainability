@@ -1,0 +1,172 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{gapblue}{HTML}{4477AA}
+\definecolor{densered}{HTML}{EE7733}
+\definecolor{directgreen}{HTML}{228833}
+\definecolor{inkgray}{HTML}{343A40}
+\definecolor{gridgray}{HTML}{DEE3E8}
+\definecolor{pendinggray}{HTML}{AAB4BE}
+\newcommand{\AllianceBadge}{\tikz[baseline=-.4ex,x=.65ex,y=.65ex]{\path[fill=gapblue] (-.7,.9)--(.7,.9)--(.7,-.2)--(0,-.9)--(-.7,-.2)--cycle;}}
+\newcommand{\HordeBadge}{\tikz[baseline=-.4ex,x=.65ex,y=.65ex]{\path[fill=densered] (0,1)--(.75,0)--(.45,-.8)--(0,-.45)--(-.45,-.8)--(-.75,0)--cycle;}}
+\begin{document}
+
+\begin{tikzpicture}[x=.56cm,y=.48cm,font=\small]
+\node[anchor=west,font=\bfseries] at (-7.6,2.5) {D. Optional candidate expansion: all 64 paired targets};
+\node[anchor=west,font=\footnotesize] at (-7.6,1.6) {$8\!\times\!4$ base menu $\to10\!\times\!5$ expanded menu; same $H,D$, tasks, reference and thresholds};
+\node at (0.4,.55) {$D_{1}$};
+\node at (1.4,.55) {$D_{2}$};
+\node at (2.4,.55) {$D_{3}$};
+\node at (3.4,.55) {$D_{4}$};
+\node at (4.4,.55) {$D_{5}$};
+\node at (5.4,.55) {$D_{6}$};
+\node at (6.4,.55) {$D_{7}$};
+\node at (7.4,.55) {$D_{8}$};
+\node[anchor=east,font=\footnotesize] at (-.35,-0.4) {Warrior / weapon 1 \AllianceBadge\ Alliance};
+\fill[densered] (0.03,-0.69) rectangle (0.38,-0.11000000000000004);
+\fill[densered] (0.41000000000000003,-0.69) rectangle (0.76,-0.11000000000000004);
+\fill[densered] (1.03,-0.69) rectangle (1.38,-0.11000000000000004);
+\fill[densered] (1.4100000000000001,-0.69) rectangle (1.7600000000000002,-0.11000000000000004);
+\fill[densered] (2.03,-0.69) rectangle (2.38,-0.11000000000000004);
+\fill[densered] (2.4099999999999997,-0.69) rectangle (2.76,-0.11000000000000004);
+\fill[pendinggray] (3.03,-0.69) rectangle (3.38,-0.11000000000000004);
+\fill[pendinggray] (3.4099999999999997,-0.69) rectangle (3.76,-0.11000000000000004);
+\fill[densered] (4.03,-0.69) rectangle (4.38,-0.11000000000000004);
+\fill[densered] (4.41,-0.69) rectangle (4.76,-0.11000000000000004);
+\fill[densered] (5.03,-0.69) rectangle (5.38,-0.11000000000000004);
+\fill[densered] (5.41,-0.69) rectangle (5.76,-0.11000000000000004);
+\fill[densered] (6.03,-0.69) rectangle (6.38,-0.11000000000000004);
+\fill[densered] (6.41,-0.69) rectangle (6.76,-0.11000000000000004);
+\fill[densered] (7.03,-0.69) rectangle (7.38,-0.11000000000000004);
+\fill[densered] (7.41,-0.69) rectangle (7.76,-0.11000000000000004);
+\node[anchor=east,font=\footnotesize] at (-.35,-1.4) {Warrior / weapon 2 \HordeBadge\ Horde};
+\fill[directgreen] (0.03,-1.69) rectangle (0.38,-1.1099999999999999);
+\fill[directgreen] (0.41000000000000003,-1.69) rectangle (0.76,-1.1099999999999999);
+\fill[densered] (1.03,-1.69) rectangle (1.38,-1.1099999999999999);
+\fill[densered] (1.4100000000000001,-1.69) rectangle (1.7600000000000002,-1.1099999999999999);
+\fill[directgreen] (2.03,-1.69) rectangle (2.38,-1.1099999999999999);
+\fill[directgreen] (2.4099999999999997,-1.69) rectangle (2.76,-1.1099999999999999);
+\fill[pendinggray] (3.03,-1.69) rectangle (3.38,-1.1099999999999999);
+\fill[pendinggray] (3.4099999999999997,-1.69) rectangle (3.76,-1.1099999999999999);
+\fill[directgreen] (4.03,-1.69) rectangle (4.38,-1.1099999999999999);
+\fill[directgreen] (4.41,-1.69) rectangle (4.76,-1.1099999999999999);
+\fill[densered] (5.03,-1.69) rectangle (5.38,-1.1099999999999999);
+\fill[densered] (5.41,-1.69) rectangle (5.76,-1.1099999999999999);
+\fill[densered] (6.03,-1.69) rectangle (6.38,-1.1099999999999999);
+\fill[densered] (6.41,-1.69) rectangle (6.76,-1.1099999999999999);
+\fill[densered] (7.03,-1.69) rectangle (7.38,-1.1099999999999999);
+\fill[densered] (7.41,-1.69) rectangle (7.76,-1.1099999999999999);
+\draw[gridgray] (-7.6,-1.9)--(8,-1.9);
+\node[anchor=east,font=\footnotesize] at (-.35,-2.4) {Paladin / seal 1 \AllianceBadge\ Alliance};
+\fill[densered] (0.03,-2.69) rectangle (0.38,-2.11);
+\fill[densered] (0.41000000000000003,-2.69) rectangle (0.76,-2.11);
+\fill[pendinggray] (1.03,-2.69) rectangle (1.38,-2.11);
+\fill[pendinggray] (1.4100000000000001,-2.69) rectangle (1.7600000000000002,-2.11);
+\fill[directgreen] (2.03,-2.69) rectangle (2.38,-2.11);
+\fill[directgreen] (2.4099999999999997,-2.69) rectangle (2.76,-2.11);
+\fill[densered] (3.03,-2.69) rectangle (3.38,-2.11);
+\fill[densered] (3.4099999999999997,-2.69) rectangle (3.76,-2.11);
+\fill[densered] (4.03,-2.69) rectangle (4.38,-2.11);
+\fill[densered] (4.41,-2.69) rectangle (4.76,-2.11);
+\fill[densered] (5.03,-2.69) rectangle (5.38,-2.11);
+\fill[densered] (5.41,-2.69) rectangle (5.76,-2.11);
+\fill[densered] (6.03,-2.69) rectangle (6.38,-2.11);
+\fill[densered] (6.41,-2.69) rectangle (6.76,-2.11);
+\fill[densered] (7.03,-2.69) rectangle (7.38,-2.11);
+\fill[densered] (7.41,-2.69) rectangle (7.76,-2.11);
+\node[anchor=east,font=\footnotesize] at (-.35,-3.4) {Paladin / seal 2 \HordeBadge\ Horde};
+\fill[densered] (0.03,-3.69) rectangle (0.38,-3.11);
+\fill[densered] (0.41000000000000003,-3.69) rectangle (0.76,-3.11);
+\fill[directgreen] (1.03,-3.69) rectangle (1.38,-3.11);
+\fill[directgreen] (1.4100000000000001,-3.69) rectangle (1.7600000000000002,-3.11);
+\fill[densered] (2.03,-3.69) rectangle (2.38,-3.11);
+\fill[densered] (2.4099999999999997,-3.69) rectangle (2.76,-3.11);
+\fill[directgreen] (3.03,-3.69) rectangle (3.38,-3.11);
+\fill[directgreen] (3.4099999999999997,-3.69) rectangle (3.76,-3.11);
+\fill[densered] (4.03,-3.69) rectangle (4.38,-3.11);
+\fill[densered] (4.41,-3.69) rectangle (4.76,-3.11);
+\fill[directgreen] (5.03,-3.69) rectangle (5.38,-3.11);
+\fill[directgreen] (5.41,-3.69) rectangle (5.76,-3.11);
+\fill[directgreen] (6.03,-3.69) rectangle (6.38,-3.11);
+\fill[directgreen] (6.41,-3.69) rectangle (6.76,-3.11);
+\fill[densered] (7.03,-3.69) rectangle (7.38,-3.11);
+\fill[densered] (7.41,-3.69) rectangle (7.76,-3.11);
+\draw[gridgray] (-7.6,-3.9)--(8,-3.9);
+\node[anchor=east,font=\footnotesize] at (-.35,-4.4) {Mage / timed item 1 \AllianceBadge\ Alliance};
+\fill[directgreen] (0.03,-4.69) rectangle (0.38,-4.11);
+\fill[directgreen] (0.41000000000000003,-4.69) rectangle (0.76,-4.11);
+\fill[directgreen] (1.03,-4.69) rectangle (1.38,-4.11);
+\fill[directgreen] (1.4100000000000001,-4.69) rectangle (1.7600000000000002,-4.11);
+\fill[directgreen] (2.03,-4.69) rectangle (2.38,-4.11);
+\fill[directgreen] (2.4099999999999997,-4.69) rectangle (2.76,-4.11);
+\fill[directgreen] (3.03,-4.69) rectangle (3.38,-4.11);
+\fill[directgreen] (3.4099999999999997,-4.69) rectangle (3.76,-4.11);
+\fill[directgreen] (4.03,-4.69) rectangle (4.38,-4.11);
+\fill[directgreen] (4.41,-4.69) rectangle (4.76,-4.11);
+\fill[directgreen] (5.03,-4.69) rectangle (5.38,-4.11);
+\fill[directgreen] (5.41,-4.69) rectangle (5.76,-4.11);
+\fill[pendinggray] (6.03,-4.69) rectangle (6.38,-4.11);
+\fill[pendinggray] (6.41,-4.69) rectangle (6.76,-4.11);
+\fill[densered] (7.03,-4.69) rectangle (7.38,-4.11);
+\fill[densered] (7.41,-4.69) rectangle (7.76,-4.11);
+\node[anchor=east,font=\footnotesize] at (-.35,-5.4) {Mage / timed item 2 \HordeBadge\ Horde};
+\fill[densered] (0.03,-5.69) rectangle (0.38,-5.11);
+\fill[densered] (0.41000000000000003,-5.69) rectangle (0.76,-5.11);
+\fill[directgreen] (1.03,-5.69) rectangle (1.38,-5.11);
+\fill[directgreen] (1.4100000000000001,-5.69) rectangle (1.7600000000000002,-5.11);
+\fill[directgreen] (2.03,-5.69) rectangle (2.38,-5.11);
+\fill[directgreen] (2.4099999999999997,-5.69) rectangle (2.76,-5.11);
+\fill[directgreen] (3.03,-5.69) rectangle (3.38,-5.11);
+\fill[directgreen] (3.4099999999999997,-5.69) rectangle (3.76,-5.11);
+\fill[densered] (4.03,-5.69) rectangle (4.38,-5.11);
+\fill[densered] (4.41,-5.69) rectangle (4.76,-5.11);
+\fill[pendinggray] (5.03,-5.69) rectangle (5.38,-5.11);
+\fill[pendinggray] (5.41,-5.69) rectangle (5.76,-5.11);
+\fill[directgreen] (6.03,-5.69) rectangle (6.38,-5.11);
+\fill[directgreen] (6.41,-5.69) rectangle (6.76,-5.11);
+\fill[densered] (7.03,-5.69) rectangle (7.38,-5.11);
+\fill[densered] (7.41,-5.69) rectangle (7.76,-5.11);
+\draw[gridgray] (-7.6,-5.9)--(8,-5.9);
+\node[anchor=east,font=\footnotesize] at (-.35,-6.4) {Druid / resource 1 \AllianceBadge\ Alliance};
+\fill[densered] (0.03,-6.69) rectangle (0.38,-6.11);
+\fill[densered] (0.41000000000000003,-6.69) rectangle (0.76,-6.11);
+\fill[densered] (1.03,-6.69) rectangle (1.38,-6.11);
+\fill[densered] (1.4100000000000001,-6.69) rectangle (1.7600000000000002,-6.11);
+\fill[densered] (2.03,-6.69) rectangle (2.38,-6.11);
+\fill[densered] (2.4099999999999997,-6.69) rectangle (2.76,-6.11);
+\fill[densered] (3.03,-6.69) rectangle (3.38,-6.11);
+\fill[densered] (3.4099999999999997,-6.69) rectangle (3.76,-6.11);
+\fill[densered] (4.03,-6.69) rectangle (4.38,-6.11);
+\fill[densered] (4.41,-6.69) rectangle (4.76,-6.11);
+\fill[densered] (5.03,-6.69) rectangle (5.38,-6.11);
+\fill[densered] (5.41,-6.69) rectangle (5.76,-6.11);
+\fill[densered] (6.03,-6.69) rectangle (6.38,-6.11);
+\fill[densered] (6.41,-6.69) rectangle (6.76,-6.11);
+\fill[densered] (7.03,-6.69) rectangle (7.38,-6.11);
+\fill[densered] (7.41,-6.69) rectangle (7.76,-6.11);
+\node[anchor=east,font=\footnotesize] at (-.35,-7.4) {Druid / resource 2 \HordeBadge\ Horde};
+\fill[directgreen] (0.03,-7.69) rectangle (0.38,-7.11);
+\fill[directgreen] (0.41000000000000003,-7.69) rectangle (0.76,-7.11);
+\fill[densered] (1.03,-7.69) rectangle (1.38,-7.11);
+\fill[densered] (1.4100000000000001,-7.69) rectangle (1.7600000000000002,-7.11);
+\fill[directgreen] (2.03,-7.69) rectangle (2.38,-7.11);
+\fill[directgreen] (2.4099999999999997,-7.69) rectangle (2.76,-7.11);
+\fill[directgreen] (3.03,-7.69) rectangle (3.38,-7.11);
+\fill[directgreen] (3.4099999999999997,-7.69) rectangle (3.76,-7.11);
+\fill[directgreen] (4.03,-7.69) rectangle (4.38,-7.11);
+\fill[directgreen] (4.41,-7.69) rectangle (4.76,-7.11);
+\fill[densered] (5.03,-7.69) rectangle (5.38,-7.11);
+\fill[densered] (5.41,-7.69) rectangle (5.76,-7.11);
+\fill[directgreen] (6.03,-7.69) rectangle (6.38,-7.11);
+\fill[directgreen] (6.41,-7.69) rectangle (6.76,-7.11);
+\fill[densered] (7.03,-7.69) rectangle (7.38,-7.11);
+\fill[densered] (7.41,-7.69) rectangle (7.76,-7.11);
+\fill[directgreen] (-7.4,-8.76) rectangle (-6.95,-8.44);\node[anchor=west,font=\footnotesize] at (-6.800000000000001,-8.6) {YES $\to$ same: 23};
+\fill[densered] (-2.4000000000000004,-8.76) rectangle (-1.9500000000000004,-8.44);\node[anchor=west,font=\footnotesize] at (-1.8000000000000003,-8.6) {NO $\to$ same: 36};
+\fill[pendinggray] (2.5999999999999996,-8.76) rectangle (3.05,-8.44);\node[anchor=west,font=\footnotesize] at (3.1999999999999997,-8.6) {Unresolved $\to$ same: 5};
+\node[anchor=west,font=\footnotesize] at (-7.6,-9.6) {Each split cell: base (left), expanded (right). Status transitions: 0/64.};
+\node[anchor=west,font=\footnotesize] at (-7.6,-10.45) {Exact means: 24 YES$\to$YES, 40 NO$\to$NO; no rescue from these registered additions.};
+\node[anchor=west,font=\footnotesize] at (-7.6,-11.3) {Optional additions preserve feasible publications; absent observed benefit does not prove all expansions ineffective.};
+\end{tikzpicture}
+\end{document}

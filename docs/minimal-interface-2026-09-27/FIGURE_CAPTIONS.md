@@ -1,0 +1,9 @@
+# Candidate figures (paper unchanged)
+
+`figures/low_order_ablation.pdf` / `.svg`: Certified false-positive target decisions remaining after retaining every answer through order r, and separately UNKNOWN-subset-blocked full NO decisions and full UNKNOWN decisions without a low-order NO. Left: sixteen original base menus, 16,384 targets. Right: eight dependent expanded menus, 65,536 targets. Every powerset is exhaustive. The Druid annotation counts two minimal triples and their four-item union as three missed targets. No binomial confidence intervals; these are correlated query counts, not sampled prevalence.
+
+`figures/theory_native_order_gap.pdf` / `.svg`: Left is an abstract construction, with no native observation attached. Right is the independently reproduced fixed Druid contract, A=Shivery Handwraps, B=Mooncloth Boots, C=Premier Knight-Champion's Lunarhide Boots. Every pair is supported, the triple excluded, and every physical configuration cap-safe. Statistical claims inherit the original fixed-N approximate simultaneous event.
+
+`figures/target_semantics_witnesses.pdf` / `.svg`: Abstract set-interface illustration of losing helper identity under target projection. A chosen full publication is explicit witness payload. The native E=I minus H contracts do not merge distinct maximal publications; this figure is not presented as native compression evidence.
+
+`tables/native_minimal_obstruction_inventory_primary.csv`: Every certified primary obstruction, including empty and singleton targets, class/faction labels, target IDs, tolerance, proper-subset YES, target NO and all helper supersets. `_all_contracts.csv` retains separate task-projection and tolerance strata. `tables/representation_audit.csv` uses the supported mode, while `TARGET_INTERFACE_AUDIT.csv` includes all exact/supported/possible counts and byte measurements.

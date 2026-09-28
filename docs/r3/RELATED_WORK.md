@@ -1,0 +1,5 @@
+# Primary-source positioning
+
+[Dayan (1993), Improving Generalization for Temporal Difference Learning](https://www.gatsby.ucl.ac.uk/~dayan/papers/d93b.pdf) develops successor representations. [Barreto et al. (2017), Successor Features for Transfer in Reinforcement Learning, section3](https://proceedings.neurips.cc/paper_files/paper/2017/file/350db081a661525235354dd3e19b8c05-Paper.pdf) separates fixed dynamics from linear rewards. Both primary papers were opened and checked during R3. The affine reward identity here is a native specialization of known structure, not a new identity.
+
+The possible contribution is locating source-audited useful complement regions, distinguishing kernel reuse from verbal type reuse, and showing why transferable power rules still fail sustainable novelty/legacy goals. Finite strict-inequality neighborhoods, elementary exception-list counting and bounded-space packing are standard arguments. The native finite case study does not itself establish broad originality or AISTATS suitability.

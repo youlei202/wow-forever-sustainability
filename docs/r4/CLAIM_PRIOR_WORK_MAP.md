@@ -1,0 +1,23 @@
+# Claim-to-prior-work map
+
+This targeted primary-source check limits the current claims. It does not
+certify originality, venue suitability, or completeness of the literature.
+
+| Proposed object or observation | Established precedent | Current permitted claim |
+|---|---|---|
+| Joint installation, missing dependencies, incompatible bundles | [EDOS formalization](https://www.mancoosi.org/edos/formalization/), healthy installation, installability/co-installability, and dependency closure | Native item qualification can require coequipment; minimum batch two is not a new dependency concept. |
+| Size of a complementary support or hyperedge | [Abraham et al., Combinatorial Auctions with Restricted Complements](https://arxiv.org/abs/1205.4104); [Feige and Izsak, supermodular degree](https://www.wisdom.weizmann.ac.il/~feige/mypapers/SupermodularDegree.pdf); [Chen et al., complementarity witnesses](https://arxiv.org/abs/1805.04436) | Qualifying support records an empirical constraint obstruction. Hyperedge rank and complementarity size are established; the full R4 predicate is not claimed to equal a monotone valuation. |
+| Bundle offering with complements and substitutes | [Immorlica et al., Combinatorial Assortment Optimization](https://arxiv.org/abs/1711.02601) | A native minimal release must be explained by its physical and joint constraints, not merely labeled a useful bundle. |
+| Removing a competitor to retain a choice's role | [Wang, Zhao and Ke, Threshold Multinomial Logit manuscript abstract](https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID4190089_code1318674.pdf?abstractid=4184044&mirid=1) | The native N restoration is a concrete threshold-competition example. Only the author abstract was retrieved; no unseen theorem is claimed. |
+| Conjunctions of threshold admission rules | [Aouad, Farias and Levi, Consider-then-Choose](https://web.mit.edu/~vivekf/www/papers/MS-Static.pdf), §2 | Witness-response closure is a conditional exact representation of this finite predicate. Conjunctive screening itself is established. Full-information response coordinates do not imply source-feature transfer. |
+| Overlapping representation constraints and shared witnesses | [Bredereck et al., Multiwinner Elections With Diversity Constraints](https://ojs.aaai.org/index.php/AAAI/article/view/11457) | Old sources may share gears/tasks. Coverage, representation constraints and elementary witness sparsification are not original claims. |
+| Support bound `s(|L|+1+K)` | Elementary selection of one witness per obligation, plus a portfolio; related coverage and support representations above | A precise sufficient sparsification bound for the explicitly stated R4 joint predicate, with independent finite tests. No claim that a general sparsification principle is new. The complete coequipment counterexample shows which R4 obligation can make minimum release size grow. |
+| Controlled continuation, viability and history-dependent state | [Aubin et al., Viability and Invariance Kernels of Impulse Differential Inclusions](https://people.eecs.berkeley.edu/~sastry/pubs/PDFs%20of%20Pubs2000-2005/Pdfs%20of%20Misc.Others/Aubin/AubinViability.pdf) | Finite backward feasibility is an application of established viability reasoning. Protected-profile identity belongs in state; the archive is redundant under the current monotone-H/fixed-physics convention. |
+| Native effect necessity and fresh prediction | Full recorded executable-engine ablations and independent samples, with frozen numerical caps | The surviving finite pairs do not require the haste callback; weak physical gear plus a rage/Nature channel can qualify. Unchanged-item population cap safety, original foundational theory, and indefinite extension remain unestablished. |
+| Selected finite research-variant certificate | Standard simultaneous mean intervals, paired block uncertainty and conservative witness bounds; no new statistical theorem claimed | Fresh4096-seed Human gear d9ddad879238ea73 with TF weapon damage scale.5 supports all six checks approximately (cap lower slack1.677617DPS, D lower.063498). Orc scale.75 leaves L unresolved. These are B-permission item variants; intervals are not distribution-free, and the17-gear study cannot prove population singleton impossibility. |
+
+Same-dimension generic rules contain the structured additive rules considered
+here. The C/E controls found equal feasibility for scalar/generic alternatives
+in both the original and exploratory unseen subset-repair cases. No result is advertised as a generic
+rule separation. Abstract counterexamples, finite-table algebra, source-code
+mechanics, and fresh native measurements are reported as separate evidence.
